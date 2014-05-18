@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+/* 
+	活动预览单元部分 
+*/
+.event-item{
+	font-size:1.3em;
+	margin-top:20px;
+	margin-bottom:40px;
+}
+.event-item .title{
+	font-weight:bold;
+}
+
+.event-item .label{
+	font-size:60%;
+}
+.event-item a:hover{ /* 活动标题的颜色，打算与右侧的标签颜色统一*/
+	color:#0C3;
+}
+.event-operation{ /*预览上的操作*/
+	float:right;
+	clear:right;
+	margin:10px;
+}
+
+

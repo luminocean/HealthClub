@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+/*全局设置*/
+body{
+	/*设置背景*/
+	background-image:url(../pic/background.jpg);
+	background-attachment:fixed;
+	
+	/*设置默认字体颜色*/
+	color:#FFF;
+	font-family:'微软雅黑', Verdana, Geneva, sans-serif;
+	
+	/* 固定顶部的补偿 */
+	padding-top:70px;
+}
+/*所有超链接默认白色*/
+a{
+	color:#FFF;	
+}
+
+/*页面标题*/
+.page-title{
+	font-size:2em;
+	font-weight:bold;
+}
+
+/* affix 相关设置 */
+.sidenav.affix {
+  position: static;
+}
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+  .sidenav .nav > .active > ul {
+    display: block;
+  }
+  /* Widen the fixed sidebar */
+  .sidenav.affix,
+  .sidenav.affix-bottom {
+    width: 183px;
+  }
+  .sidenav.affix {
+    position: fixed; /* Undo the static from mobile first approach */
+    top: 80px;
+  }
+  .sidenav.affix-bottom {
+    position: absolute; /* Undo the static from mobile first approach */
+  }
+  .sidenav.affix-bottom .bs-sidenav,
+  .sidenav.affix .bs-sidenav {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 1200px) {
+  /* Widen the fixed sidebar again */
+  .sidenav.affix-bottom,
+  .sidenav.affix {
+    width: 183px;
+  }
+}
+/* affix 设置结束 */
+
+
+
+/*侧导航栏*/
+.sidenav{
+	margin-top:20px;
+	margin-bottom:50px;
+	padding-left:25px; /* 调整页面左右面积分配 */
+	font-size:1.5em;
+	text-shadow: 0 1px 0 #fff;
+	position:fixed;
+}
+/*侧边栏各胶囊选项激活态的颜色*/
+.sidenav li.active a, 
+.sidenav li.active a:focus,
+.sidenav li.active a:hover{
+	background-color:#6A5ACD;
+}
+/*侧边栏鼠标滑过的文字颜色*/
+.sidenav a:hover, .sidenav a:focus{
+	color:#000;
+}
+
+
+/*最近活动块*/
+#recent-events{
+	margin-left:15px;	
+	margin-top:10px;
+}
+/*活动块的按钮颜色*/
+#recent-events button{
+	background-color:#6A5ACD;
+	border-color:#6A5ACD;
+}
+
+
+
+/* 切换面板*/
+.info-tab{
+	margin-top:50px;	
+}
+
+.info-tab .info-tab-header{
+	font-size:1.4em;	
+}
+
+.info-tab .tab-content{
+	padding-top:20px;	
+}
+
+/* 活动模态框 */
+.modal{
+	color:#000;	/*模态框的内容设置为黑色否则看不见*/
+}
+
+
+
+
+
+
+
+

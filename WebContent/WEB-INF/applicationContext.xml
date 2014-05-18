@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- Spring配置文件的根元素，使用spring-beans-3.0.xsd语义约束 -->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<!-- Action配置区域 -->
+	<bean id="indexAction" class="action.IndexAction" scope="request">
+		<property name="userService" ref="userService" />
+		<property name="eventService" ref="eventService" />
+	</bean>
+	
+	<bean id="loginAction" class="action.LoginAction" scope="request">
+		<property name="userService" ref="userService" />
+	</bean>
+	
+	<bean id="registerAction" class="action.RegisterAction" scope="request">
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<bean id="eventAction" class="action.EventAction" scope="request">
+		<property name="eventService" ref="eventService" />
+	</bean>
+	
+	<bean id="userInfoAction" class="action.UserInfoAction" scope="request">
+		<property name="userService" ref="userService" />
+		<property name="eventService" ref="eventService" />
+	</bean>
+	
+	
+	<bean id="paymentAction" class="action.PaymentAction" scope="request">
+		<property name="userService" ref="userService" />
+	</bean>
+	
+	<bean id="reserveAction" class="action.ReserveAction" scope="request">
+		<property name="eventService" ref="eventService" />
+	</bean>
+
+	<bean id="eventEditAction" class="action.EventEditAction" scope="request">
+		<property name="eventService" ref="eventService" />
+	</bean>
+
+
+	<bean id="statisticAction" class="action.StatisticAction" scope="request">
+		<property name="statisticService" ref="statisticService" />
+	</bean>
+	
+	
+	
+	<!-- 统计Action配置 -->
+	<bean id="pieChartAction" class="action.PieChartAction" scope="request">
+		<property name="statisticService" ref="statisticService" />
+	</bean>
+	
+	<bean id="barChartAction" class="action.BarChartAction" scope="request">
+		<property name="statisticService" ref="statisticService" />
+	</bean>
+	
+	<bean id="lineChartAction" class="action.LineChartAction" scope="request">
+		<property name="statisticService" ref="statisticService" />
+	</bean>
+
+
+
+	<!-- 用户逻辑配置区域 -->
+	<bean id="userService" class="logic.logicImpl.UserServiceImpl"
+		scope="singleton">
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+	<bean id="eventService" class="logic.logicImpl.EventServiceImpl"
+		scope="singleton">
+		<property name="eventDao" ref="eventDao" />
+	</bean>
+	
+	<bean id="statisticService" class="logic.logicImpl.StatisticServiceImpl"
+		scope="singleton">
+		<property name="statisticDao" ref="statisticDao" />
+	</bean>
+	
+	
+	<bean id="timer" class="util.RoundTimer" scope="singleton">
+		<property name="userService" ref="userService"/>
+		<property name="eventService" ref="eventService"/>
+	</bean>
+
+
+
+	<!-- 数据访问层配置区域 -->
+	<bean id="userDao" class="dao.daoImpl.UserDaoImpl" scope="singleton">
+		<property name="emf" ref="emf" />
+		<property name="overdueMax" value="180"></property>
+	</bean>
+
+	<bean id="eventDao" class="dao.daoImpl.EventDaoImpl" scope="singleton">
+		<property name="emf" ref="emf" />
+	</bean>
+	
+	<bean id="statisticDao" class="dao.daoImpl.StatisticDaoImpl" scope="singleton">
+		<property name="emf" ref="emf" />
+	</bean>
+
+
+	<!-- 以下为JPA配置区域 -->
+	<bean id="emf"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		scope="singleton">
+		<!-- 使用已有的数据源 -->
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="database" value="MYSQL" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>java:comp/env/jdbc/HealthClub</value>
+		</property>
+	</bean>
+	
+	
+	<!-- 定时任务配置区域 -->
+	<!-- <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="cronTrigger" />
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="jobDetail" />
+        <property name="cronExpression" value="0/5 * * * * ?" />
+    </bean>
+    
+    <bean id="jobDetail"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">  
+            <ref bean="myJob" />  
+        </property>  
+        <property name="targetMethod">  
+            <value>speak</value>  
+        </property>  
+    </bean>
+    
+    <bean id="myJob" class="util.Worker" />   -->
+</beans>
+

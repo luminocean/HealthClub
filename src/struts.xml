@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+	<!-- 继承的基础package -->
+	<package name="base" extends="struts-default" abstract="true">
+		<interceptors>
+			<interceptor name="loginCheck" class="interceptor.LoginCheckInterceptor" />
+			<interceptor-stack name="commonStack">
+				<interceptor-ref name="loginCheck" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="commonStack" />
+
+		<global-results>
+			<result name="error">/error.jsp</result>
+			<result name="login">/login.jsp</result>
+		</global-results>
+	</package>
+
+
+	<!-- 根目录通用包 -->
+	<package name="default" namespace="/" extends="base">
+		<default-action-ref name="default" />
+
+		<action name="default">
+			<result>
+				/login.jsp
+			</result>
+			
+			<!-- 覆盖默认的登录验证，否则会出不去 -->
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+		<action name="user-home" class="indexAction" method="getUserIndex">
+			<result>
+				/user-pages/user-index.jsp
+			</result>
+		</action>
+
+		<action name="servant-home" class="indexAction" method="getServantIndex">
+			<result>
+				/servant-pages/servant-index.jsp
+			</result>
+		</action>
+
+
+		<!-- 登录Action -->
+		<action name="login" class="loginAction">
+			<result name="userSuccess" type="chain">
+				<param name="actionName">user-home</param>
+				<param name="namespace">/user</param>
+			</result>
+
+			<result name="servantSuccess" type="chain">
+				<param name="actionName">servant-home</param>
+				<param name="namespace">/servant</param>
+			</result>
+
+			<result name="managerSuccess" type="chain">
+				<param name="actionName">manager-home</param>
+				<param name="namespace">/manager</param>
+			</result>
+
+			<result name="input">/login.jsp</result>
+
+			<!-- 覆盖默认的登录验证，否则会出不去 -->
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+
+		<!-- 登出Action -->
+		<action name="logout" class="action.LogoutAction">
+			<result name="success">/login.jsp</result>
+
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+
+		<!-- 注册Action -->
+		<action name="register" class="registerAction">
+			<result name="success">/user-pages/user-index.jsp</result>
+			<result name="input">/login.jsp</result>
+
+			<result name="login" type="chain">
+				<param name="actionName">login</param>
+			</result>
+
+			<!-- 覆盖默认的登录验证，否则会出不去 -->
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+	</package>
+
+
+	<!-- manager包 -->
+	<package name="manager" namespace="/manager" extends="base">
+		<result-types>
+			<result-type name="chart"
+				class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="height">150</param>
+				<param name="width">200</param>
+			</result-type>
+		</result-types>
+
+
+		<default-action-ref name="business-statistic" />
+
+		<!-- 默认经理主页 -->
+		<action name="manager-home" class="indexAction" method="getServantIndex">
+			<result>
+				/manager-pages/business-statistic.jsp
+			</result>
+		</action>
+
+		<action name="business-statistic" class="statisticAction"
+			method="getBusinessStatistic">
+			<result>
+				/manager-pages/business-statistic.jsp
+			</result>
+		</action>
+
+		<action name="user-statistic" class="statisticAction" method="getUserStatistic">
+			<result>
+				/manager-pages/user-statistic.jsp
+			</result>
+		</action>
+
+
+		<action name="business-forecast" class="statisticAction"
+			method="makeForecast">
+			<result>
+				/manager-pages/business-forecast.jsp
+			</result>
+		</action>
+
+
+
+		<!-- 统计图表 -->
+		<action name="place-usage" class="action.chart.BarChartAction">
+			<param name="title">场地统计</param>
+			<param name="xAxis">场地</param>
+			<param name="yAxis">使用频次</param>
+
+			<result type="chart">
+				<param name="width">700</param>
+				<param name="height">400</param>
+			</result>
+		</action>
+
+		<action name="coach-usage" class="action.chart.BarChartAction">
+			<param name="title">教练统计</param>
+			<param name="xAxis">教练名</param>
+			<param name="yAxis">工作次数</param>
+
+			<result type="chart">
+				<param name="width">700</param>
+				<param name="height">400</param>
+			</result>
+		</action>
+
+		<action name="month-usage" class="action.chart.LineChartAction">
+			<param name="title">月人数统计</param>
+			<param name="xAxis">相对天数</param>
+			<param name="yAxis">人数</param>
+
+			<result type="chart">
+				<param name="width">700</param>
+				<param name="height">400</param>
+			</result>
+		</action>
+
+		<action name="age-chart" class="action.chart.PieChartAction">
+			<param name="title">年龄统计</param>
+			<result type="chart">
+				<param name="width">700</param>
+				<param name="height">400</param>
+			</result>
+		</action>
+
+		<action name="sex-chart" class="action.chart.PieChartAction">
+			<param name="title">性别统计</param>
+			<result type="chart">
+				<param name="width">700</param>
+				<param name="height">400</param>
+			</result>
+		</action>
+
+		<action name="living-place-chart" class="action.chart.PieChartAction">
+			<param name="title">居住地统计</param>
+			<result type="chart">
+				<param name="width">700</param>
+				<param name="height">400</param>
+			</result>
+		</action>
+
+		<action name="status-chart" class="action.chart.PieChartAction">
+			<param name="title">会员状态统计</param>
+
+			<result type="chart">
+				<param name="width">700</param>
+				<param name="height">400</param>
+			</result>
+		</action>
+
+	</package>
+
+
+	<!-- servant包 -->
+	<package name="servant" namespace="/servant" extends="base">
+		<default-action-ref name="all-events" />
+
+		<!-- 默认服务员主页 -->
+		<action name="servant-home" class="eventAction" method="getServantAllEvents">
+			<result name="toAllEvents">
+				/servant-pages/servant-all-events.jsp
+			</result>
+		</action>
+
+		<!-- 所有活动 -->
+		<action name="all-events" class="eventAction" method="getServantAllEvents">
+			<result name="toAllEvents">
+				/servant-pages/servant-all-events.jsp
+			</result>
+		</action>
+
+		<!-- 活动编辑/添加页面 -->
+		<action name="edit-event" class="eventEditAction" method="editEvent">
+			<result name="toEventEdit">
+				/servant-pages/edit-event.jsp
+			</result>
+		</action>
+
+
+		<!-- 编辑活动提交 -->
+		<action name="submit-event" class="eventEditAction" method="submitEvent">
+			<result name="toAllEvents" type="chain">
+				<param name="actionName">all-events</param>
+			</result>
+		</action>
+
+
+		<!-- 会员信息 -->
+		<action name="user-info" class="userInfoAction" method="getServantUserInfo">
+			<result name="toUserInfo">
+				/servant-pages/user-info.jsp
+			</result>
+		</action>
+
+		<!-- 获取完结的活动 -->
+		<action name="closed-events" class="eventAction" method="getClosedEvents">
+			<result name="toClosedEvents">
+				/servant-pages/closed-events.jsp
+			</result>
+		</action>
+
+
+	</package>
+
+
+	<!-- user包 -->
+	<package name="user" namespace="/user" extends="base">
+		<default-action-ref name="user-home" />
+
+		<!-- 默认用户主页 -->
+		<action name="user-home" class="indexAction" method="getUserIndex">
+			<result>
+				/user-pages/user-index.jsp
+			</result>
+		</action>
+
+		<!-- 所有活动 -->
+		<action name="all-events" class="eventAction" method="getUserAllEvents">
+			<result name="toAllEvents">
+				/user-pages/user-all-events.jsp
+			</result>
+		</action>
+
+		<!-- 已预约活动 -->
+		<action name="reserved-events" class="eventAction" method="getReservedActiveEvents">
+			<result name="toReservedEvents">
+				/user-pages/user-reserved-events.jsp
+			</result>
+		</action>
+
+		<!-- 预约新活动 -->
+		<action name="reserve-new-events" class="eventAction" method="reserveNewEvents">
+			<result name="toReservableEvents">
+				/user-pages/user-new-events.jsp
+			</result>
+		</action>
+
+
+		<!-- 会员信息 -->
+		<action name="user-info" class="userInfoAction" method="getUserInfo">
+			<result name="toUserInfo">
+				/user-pages/user-info.jsp
+			</result>
+		</action>
+
+		<!-- 信息修改 -->
+		<action name="modify-info" class="userInfoAction" method="modifyInfo">
+			<result name="toUserInfo">
+				/user-pages/user-info.jsp
+			</result>
+		</action>
+
+		<!-- 用户激活 -->
+		<action name="activate-membership" class="paymentAction"
+			method="activateMembership">
+			<result name="toUserInfo">
+				/user-pages/user-info.jsp
+			</result>
+		</action>
+
+
+		<!-- 会员资格取消 -->
+		<action name="cancel-membership" class="userInfoAction" method="cancelMembership">
+			<result name="toUserInfo">
+				/user-pages/user-info.jsp
+			</result>
+		</action>
+
+
+		<!-- 用户续费 -->
+		<action name="recover-membership" class="paymentAction" method="recoverMembership">
+			<result name="toUserInfo">
+				/user-pages/user-info.jsp
+			</result>
+		</action>
+
+
+		<!-- 预定/取消预定 -->
+		<action name="reserve-event" class="reserveAction" method="reserve">
+			<result name="toReservedEvents" type="chain">
+				<param name="actionName">reserved-events</param>
+			</result>
+			
+			<!-- 如果用户没有权限 -->
+			<result name="toReservedEventsAlert">
+				/user-pages/user-reserved-events.jsp
+			</result>
+		</action>
+
+	</package>
+
+</struts>
