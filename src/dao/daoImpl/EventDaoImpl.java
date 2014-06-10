@@ -52,7 +52,6 @@ public class EventDaoImpl implements EventDao{
 	@Override
 	public List<Event> getAllActiveEvents(String account) {
 		List<Event> events = getAllActiveEvents();
-		
 		for( Event event: events ){
 			Set<User> users = event.getUsers();
 			
@@ -65,14 +64,24 @@ public class EventDaoImpl implements EventDao{
 		
 		return events;
 	}
+	
+	
 
 	@Override
 	public List<Event> getAllActiveEvents() {
 		@SuppressWarnings("unchecked")
 		List<Event> events = (List<Event>)getJpaTemplate()
-				.find("select event from Event as event where event.isClosed=false");
+				.find("select event from Event as event");
 		
-		return events;
+		List<Event> activeEvents = new LinkedList<Event>();
+		
+		for( Event event: events ){
+			if( !event.isClosed() ){
+				activeEvents.add(event);
+			}
+		}
+		
+		return activeEvents;
 	}
 
 	
@@ -141,37 +150,30 @@ public class EventDaoImpl implements EventDao{
 	}
 	
 	
-	@Override
-	public void settleEventState() {
-		System.out.println("In dao!");
-		
-		Calendar now = Calendar.getInstance();
-		
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-		
-		List<Event> events = getAllActiveEvents();
-		
-		for(Event event: events){
-			Calendar newest = event.getNewestTime();
-			//如果最新的occasion都已经过时
-			if( (now.getTimeInMillis() - newest.getTimeInMillis()) >0){
-				event.setClosed(true);
-				
-				em.merge(event);
-			}
-		}
-		
-		em.flush();
-		
-		em.getTransaction().commit();
-	}
 	
 	@Override
 	public List<Event> getClosedEvents(String account) {
 		@SuppressWarnings("unchecked")
 		List<Event> events = (List<Event>)getJpaTemplate()
 				.find("select user.events from User as user where user.account = ?1", account);
+		
+		List<Event> closedEvents = new LinkedList<Event>();
+		
+		for( Event event: events ){
+			if( event.isClosed() ){
+				closedEvents.add(event);
+			}
+		}
+		
+		return closedEvents;
+	}
+	
+	
+	@Override
+	public List<Event> getAllClosedEvents() {
+		@SuppressWarnings("unchecked")
+		List<Event> events = (List<Event>)getJpaTemplate()
+				.find("select event from Event event");
 		
 		List<Event> closedEvents = new LinkedList<Event>();
 		
@@ -276,15 +278,7 @@ public class EventDaoImpl implements EventDao{
 		return event;
 	}
 	
-	@Override
-	public List<Event> getAllClosedEvents() {
-		EntityManager em = emf.createEntityManager();
-		Query query = em.createQuery("select event from Event event where event.isClosed = true");
-		
-		List<Event> events = query.getResultList();
-		
-		return events;
-	}
+	
 	
 	
 	@Override

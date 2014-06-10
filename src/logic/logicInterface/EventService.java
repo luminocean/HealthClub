@@ -40,18 +40,21 @@ public interface EventService {
 	 * 预定活动
 	 * @param account
 	 * @param eventId
-	 * @param reserveOption
+	 * @param reserveOption true为预订，false为取消
 	 */
 	public void reserve(String account, int eventId, boolean reserveOption);
 	
-	
-
+	/**
+	 * 提交活动！新建活动或者修改已有活动
+	 * @param eventId
+	 * @param title
+	 * @param detail
+	 * @param tags
+	 * @param coaches
+	 * @param places
+	 * @param times
+	 */
 	public void submitEvent(int eventId, String title, String detail, String tags,
 			List<String> coaches, List<String> places, List<String> times);	
-	/**
-	 * 活动状态结算
-	 */
-	public void settleEventState();
 
-	
 }

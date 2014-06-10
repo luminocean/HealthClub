@@ -200,7 +200,7 @@
 		</action>
 
 		<!-- 所有活动 -->
-		<action name="all-events" class="eventAction" method="getServantAllEvents">
+		<action name="all-events" class="eventAction" method="getAllEventsForServant">
 			<result name="toAllEvents">
 				/servant-pages/servant-all-events.jsp
 			</result>

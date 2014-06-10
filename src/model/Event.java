@@ -43,9 +43,6 @@ public class Event {
 	@Transient
 	private Boolean isReserved = false;
 	
-	@Column(name="closed")
-	private Boolean isClosed = false;
-	
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="event")
 	private Set<Occasion> occasions = new HashSet<Occasion>();
@@ -82,18 +79,17 @@ public class Event {
 	}
 	
 	
-	public Calendar getNewestTime(){
-		ArrayList<Occasion> list = new ArrayList<Occasion>();
-		
-		list.addAll(occasions);
-		
-		Collections.sort(list);
-		
-		Occasion newestOccasion = list.get(list.size()-1);
-		
-		return newestOccasion.getTime();
+	/**
+	 * 如果给不出距离现在最近的活动时间，表示该活动已经过去
+	 * @return
+	 */
+	public Boolean isClosed() {
+		if( getLatestTime() == null ){
+			return true;
+		}else{
+			return false;
+		}
 	}
-	
 	
 	
 	public int getId() {
@@ -154,12 +150,9 @@ public class Event {
 		this.users = users;
 	}
 
-	public Boolean isClosed() {
-		return isClosed;
-	}
 
-	public void setClosed(Boolean isClosed) {
+	/*public void setClosed(Boolean isClosed) {
 		this.isClosed = isClosed;
-	}
+	}*/
 	
 }

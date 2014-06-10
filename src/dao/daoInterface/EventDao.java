@@ -12,7 +12,7 @@ public interface EventDao {
 
 
 	/**
-	 * 获取所有当前未失效的活动
+	 * 获取所有当前未过期的活动
 	 * @param account 标记对于该用户是否已经预约该活动
 	 * @return
 	 */
@@ -21,8 +21,6 @@ public interface EventDao {
 	public List<Event> getReservedEvents(String account);
 
 	public void reserve(String account, int eventId, boolean reserveOption);
-
-	public void settleEventState();
 
 	public List<Event> getClosedEvents(String account);
 

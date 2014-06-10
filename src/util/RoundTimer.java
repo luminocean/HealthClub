@@ -61,7 +61,7 @@ public class RoundTimer {
 		System.out.println("settling events");
 		
 		if ( eventService != null ){
-			eventService.settleEventState();
+			//eventService.settleEventState();
 		}
 	}
 

@@ -66,11 +66,6 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public void settleEventState() {
-		eventDao.settleEventState();
-	}
-
-	@Override
 	public List<Event> getClosedEvents(String account) {
 		return eventDao.getClosedEvents(account);
 	}
