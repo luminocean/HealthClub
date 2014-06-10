@@ -8,17 +8,16 @@ import model.Event;
 import model.Place;
 
 public interface EventService {
-	/**
-	 * 获取活动相关
-	 * @return
-	 */
+	
 	public List<Event> getAllActiveEvents();
 	
+	/**
+	 * @param account 用来标记该用户是否预约
+	 * @return
+	 */
 	public List<Event> getAllActiveEvents(String account);
 
 	public List<Event> getReservedEvents(String account);
-
-	public List<Event> getReservedActiveEvents(String account);
 
 	public List<Event> getReservableEvents(String account);
 	

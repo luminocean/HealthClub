@@ -45,21 +45,6 @@ public class EventServiceImpl implements EventService {
 		return events;
 	}
 	
-	@Override
-	public List<Event> getReservedActiveEvents(String account) {
-		List<Event> reservedEvents = getReservedEvents(account);
-		
-		List<Event> activeEvents = new LinkedList<Event>();
-		
-		for( Event event: reservedEvents ){
-			if( !event.isClosed() ){
-				activeEvents.add(event);
-			}
-		}
-		
-		return activeEvents;
-	}
-	
 
 	@Override
 	public List<Event> getReservableEvents(String account) {

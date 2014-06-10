@@ -49,7 +49,7 @@ public class UserInfoAction extends ActionSupport implements SessionAware, Reque
 		
 		request.put("user", user);
 		
-		List<Event> reservedEvents = eventService.getReservedActiveEvents(user.getAccount());
+		List<Event> reservedEvents = eventService.getReservedEvents(user.getAccount());
 		request.put("reservedEvents", reservedEvents);
 		
 		List<Event> closedEvents = eventService.getClosedEvents(user.getAccount());

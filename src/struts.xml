@@ -113,7 +113,7 @@
 		</action>
 
 		<!-- 所有活动 -->
-		<action name="all-events" class="eventAction" method="getUserAllEvents">
+		<action name="all-events" class="eventAction" method="getAllEventsForUser">
 			<result name="toAllEvents">
 				/user-pages/user-all-events.jsp
 			</result>
@@ -193,7 +193,7 @@
 		<default-action-ref name="all-events" />
 
 		<!-- 默认服务员主页 -->
-		<action name="servant-home" class="eventAction" method="getServantAllEvents">
+		<action name="servant-home" class="eventAction" method="getAllEventsForServant">
 			<result name="toAllEvents">
 				/servant-pages/servant-all-events.jsp
 			</result>

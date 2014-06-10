@@ -12,6 +12,11 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * 负责事件查询的Action
+ * @author luMinO
+ *
+ */
 public class EventAction extends ActionSupport implements RequestAware,SessionAware{
 	private EventService eventService;
 	
@@ -19,13 +24,11 @@ public class EventAction extends ActionSupport implements RequestAware,SessionAw
 	private Map<String, Object> sessionMap;
 	
 	
-	/**
-	 * 获取用户得到的所有活动列表
-	 * @return
-	 */
-	public String getUserAllEvents(){
+
+	public String getAllEventsForUser(){
 		User user = (User)sessionMap.get("user");
 		
+		//实际获取的是当前还在进行的活动（因为还有已完结的活动）
 		List<Event> events = eventService.getAllActiveEvents(user.getAccount());
 		
 		requestMap.put("allEvents", events);
@@ -34,11 +37,8 @@ public class EventAction extends ActionSupport implements RequestAware,SessionAw
 	}
 	
 	
-	/**
-	 * 获取服务员获得的所有活动列表
-	 * @return
-	 */
-	public String getServantAllEvents(){
+
+	public String getAllEventsForServant(){
 		List<Event> events = eventService.getAllActiveEvents();
 		
 		requestMap.put("allEvents", events);
@@ -48,13 +48,13 @@ public class EventAction extends ActionSupport implements RequestAware,SessionAw
 	
 	
 	/**
-	 * 获取未完结的、预定过的活动
+	 * 获取预定过的活动
 	 * @return
 	 */
 	public String getReservedActiveEvents(){
 		User user = (User)sessionMap.get("user");
 		
-		List<Event> events = eventService.getReservedActiveEvents(user.getAccount());
+		List<Event> events = eventService.getReservedEvents(user.getAccount());
 		
 		requestMap.put("reservedEvents", events);
 		

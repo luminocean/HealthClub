@@ -51,11 +51,6 @@ public class EventDaoImpl implements EventDao{
 
 	@Override
 	public List<Event> getAllActiveEvents(String account) {
-		EntityManager em = emf.createEntityManager();
-		
-		em.getTransaction().begin();
-		
-
 		List<Event> events = getAllActiveEvents();
 		
 		for( Event event: events ){
@@ -68,19 +63,12 @@ public class EventDaoImpl implements EventDao{
 			}
 		}
 		
-		em.getTransaction().commit();
-		
 		return events;
 	}
 
 	@Override
 	public List<Event> getAllActiveEvents() {
-		/*EntityManager em = emf.createEntityManager();
-		
-		Query query = em.createQuery("select event from Event as event where event.isClosed=false");
-		
-		List<Event> events = query.getResultList();*/
-		
+		@SuppressWarnings("unchecked")
 		List<Event> events = (List<Event>)getJpaTemplate()
 				.find("select event from Event as event where event.isClosed=false");
 		
@@ -90,18 +78,23 @@ public class EventDaoImpl implements EventDao{
 	
 	@Override
 	public List<Event> getReservedEvents(String account) {
-		EntityManager em = emf.createEntityManager();
+		List<Event> reservedEvents = new LinkedList<Event>();
 		
-		Query query = em.createQuery("select user.events from User as user where user.account = ?1");
-		query.setParameter(1, account);
+		@SuppressWarnings("unchecked")
+		List<Event> events = (List<Event>)getJpaTemplate()
+				.find("select user.events from User user where user.account=?1", account);
 		
-		List<Event> events = query.getResultList();
-		
+
+		//由于查询出来的活动里面是没有预约的信息的，因此需要手工设置
+		//同时排除已经过期的活动
 		for(Event event: events){
-			event.setReserved(true);
+			if( !event.isClosed() ){
+				event.setReserved(true);
+				reservedEvents.add(event);
+			}
 		}
 		
-		return events;
+		return reservedEvents;
 	}
 	
 	
@@ -176,18 +169,9 @@ public class EventDaoImpl implements EventDao{
 	
 	@Override
 	public List<Event> getClosedEvents(String account) {
-		EntityManager em = emf.createEntityManager();
-		Query query = em.createQuery("select user from User user where user.account=?1");
-		query.setParameter(1, account);
-		
-		List<User> users = query.getResultList();
-		
-		if( users.size() < 1 ){
-			return null;
-		}
-		
-		User user = users.get(0);
-		Set<Event> events = user.getEvents();
+		@SuppressWarnings("unchecked")
+		List<Event> events = (List<Event>)getJpaTemplate()
+				.find("select user.events from User as user where user.account = ?1", account);
 		
 		List<Event> closedEvents = new LinkedList<Event>();
 		
@@ -199,6 +183,7 @@ public class EventDaoImpl implements EventDao{
 		
 		return closedEvents;
 	}
+	
 	@Override
 	public List<Coach> getCoaches() {
 		EntityManager em = emf.createEntityManager();
