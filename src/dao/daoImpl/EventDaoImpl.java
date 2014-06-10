@@ -1,10 +1,5 @@
 package dao.daoImpl;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -15,17 +10,21 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+import org.springframework.orm.jpa.JpaTemplate;
+
+
+import org.springframework.transaction.annotation.Transactional;
 
 import model.Coach;
 import model.Event;
 import model.Occasion;
 import model.Place;
 import model.User;
-import dao.daoInterface.IEventDao;
+import dao.daoInterface.EventDao;
 
-public class EventDaoImpl implements IEventDao{
+public class EventDaoImpl implements EventDao{
 	private EntityManagerFactory emf;
+	private JpaTemplate jt;
 	
 	/**
 	 * 接受Spring容器的注入
@@ -37,11 +36,20 @@ public class EventDaoImpl implements IEventDao{
 	public EntityManagerFactory getEmf() {
 		return emf;
 	}
-
+	
+	
 	/**
-	 * 获取所有当前未失效的活动
-	 * （用户名参数是为了标记对于该用户是否已经预约该活动）
+	 * 获取JpaTemplate
+	 * @return
 	 */
+	private JpaTemplate getJpaTemplate(){
+		if( jt == null ) return new JpaTemplate(emf);
+		return jt;
+	}
+
+	
+
+	@Override
 	public List<Event> getAllActiveEvents(String account) {
 		EntityManager em = emf.createEntityManager();
 		
@@ -67,11 +75,14 @@ public class EventDaoImpl implements IEventDao{
 
 	@Override
 	public List<Event> getAllActiveEvents() {
-		EntityManager em = emf.createEntityManager();
+		/*EntityManager em = emf.createEntityManager();
 		
 		Query query = em.createQuery("select event from Event as event where event.isClosed=false");
 		
-		List<Event> events = query.getResultList();
+		List<Event> events = query.getResultList();*/
+		
+		List<Event> events = (List<Event>)getJpaTemplate()
+				.find("select event from Event as event where event.isClosed=false");
 		
 		return events;
 	}

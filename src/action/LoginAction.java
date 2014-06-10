@@ -5,7 +5,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import util.StaffType;
-import logic.logicInterface.IUserService;
+import logic.logicInterface.UserService;
 import model.Staff;
 import model.User;
 
@@ -14,7 +14,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport implements SessionAware{
-	private IUserService userService;
+	private UserService userService;
 	private Map<String, Object> session;
 	
 	private String email;
@@ -62,10 +62,10 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public IUserService getUserService() {
+	public UserService getUserService() {
 		return userService;
 	}
-	public void setUserService(IUserService userService) {
+	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 

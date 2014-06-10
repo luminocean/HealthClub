@@ -4,7 +4,7 @@ import java.awt.Font;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-import logic.logicInterface.IStatisticService;
+import logic.logicInterface.StatisticService;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
@@ -19,7 +19,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class PieChartAction extends ActionSupport {
 	private String title;
 	
-	private IStatisticService statisticService;
+	private StatisticService statisticService;
 	private JFreeChart chart;
 
 	public JFreeChart getChart() {
@@ -184,11 +184,11 @@ public class PieChartAction extends ActionSupport {
 		this.title = title;
 	}
 
-	public IStatisticService getStatisticService() {
+	public StatisticService getStatisticService() {
 		return statisticService;
 	}
 
-	public void setStatisticService(IStatisticService statisticService) {
+	public void setStatisticService(StatisticService statisticService) {
 		this.statisticService = statisticService;
 	}
 	

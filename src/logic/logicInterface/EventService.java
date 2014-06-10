@@ -7,7 +7,7 @@ import model.Coach;
 import model.Event;
 import model.Place;
 
-public interface IEventService {
+public interface EventService {
 	/**
 	 * 获取活动相关
 	 * @return

@@ -101,6 +101,146 @@
 	</package>
 
 
+	<!-- user包 -->
+	<package name="user" namespace="/user" extends="base">
+		<default-action-ref name="user-home" />
+
+		<!-- 默认用户主页 -->
+		<action name="user-home" class="indexAction" method="getUserIndex">
+			<result>
+				/user-pages/user-index.jsp
+			</result>
+		</action>
+
+		<!-- 所有活动 -->
+		<action name="all-events" class="eventAction" method="getUserAllEvents">
+			<result name="toAllEvents">
+				/user-pages/user-all-events.jsp
+			</result>
+		</action>
+
+		<!-- 已预约活动 -->
+		<action name="reserved-events" class="eventAction" method="getReservedActiveEvents">
+			<result name="toReservedEvents">
+				/user-pages/user-reserved-events.jsp
+			</result>
+		</action>
+
+		<!-- 预约新活动 -->
+		<action name="reserve-new-events" class="eventAction" method="reserveNewEvents">
+			<result name="toReservableEvents">
+				/user-pages/user-new-events.jsp
+			</result>
+		</action>
+
+
+		<!-- 会员信息 -->
+		<action name="user-info" class="userInfoAction" method="getUserInfo">
+			<result name="toUserInfo">
+				/user-pages/user-info.jsp
+			</result>
+		</action>
+
+		<!-- 信息修改 -->
+		<action name="modify-info" class="userInfoAction" method="modifyInfo">
+			<result name="toUserInfo">
+				/user-pages/user-info.jsp
+			</result>
+		</action>
+
+		<!-- 用户激活 -->
+		<action name="activate-membership" class="paymentAction"
+			method="activateMembership">
+			<result name="toUserInfo">
+				/user-pages/user-info.jsp
+			</result>
+		</action>
+
+
+		<!-- 会员资格取消 -->
+		<action name="cancel-membership" class="userInfoAction" method="cancelMembership">
+			<result name="toUserInfo">
+				/user-pages/user-info.jsp
+			</result>
+		</action>
+
+
+		<!-- 用户续费 -->
+		<action name="recover-membership" class="paymentAction" method="recoverMembership">
+			<result name="toUserInfo">
+				/user-pages/user-info.jsp
+			</result>
+		</action>
+
+
+		<!-- 预定/取消预定 -->
+		<action name="reserve-event" class="reserveAction" method="reserve">
+			<result name="toReservedEvents" type="chain">
+				<param name="actionName">reserved-events</param>
+			</result>
+			
+			<!-- 如果用户没有权限 -->
+			<result name="toReservedEventsAlert">
+				/user-pages/user-reserved-events.jsp
+			</result>
+		</action>
+
+	</package>
+	
+	
+	<!-- servant包 -->
+	<package name="servant" namespace="/servant" extends="base">
+		<default-action-ref name="all-events" />
+
+		<!-- 默认服务员主页 -->
+		<action name="servant-home" class="eventAction" method="getServantAllEvents">
+			<result name="toAllEvents">
+				/servant-pages/servant-all-events.jsp
+			</result>
+		</action>
+
+		<!-- 所有活动 -->
+		<action name="all-events" class="eventAction" method="getServantAllEvents">
+			<result name="toAllEvents">
+				/servant-pages/servant-all-events.jsp
+			</result>
+		</action>
+
+		<!-- 活动编辑/添加页面 -->
+		<action name="edit-event" class="eventEditAction" method="editEvent">
+			<result name="toEventEdit">
+				/servant-pages/edit-event.jsp
+			</result>
+		</action>
+
+
+		<!-- 编辑活动提交 -->
+		<action name="submit-event" class="eventEditAction" method="submitEvent">
+			<result name="toAllEvents" type="chain">
+				<param name="actionName">all-events</param>
+			</result>
+		</action>
+
+
+		<!-- 会员信息 -->
+		<action name="user-info" class="userInfoAction" method="getServantUserInfo">
+			<result name="toUserInfo">
+				/servant-pages/user-info.jsp
+			</result>
+		</action>
+
+		<!-- 获取完结的活动 -->
+		<action name="closed-events" class="eventAction" method="getClosedEvents">
+			<result name="toClosedEvents">
+				/servant-pages/closed-events.jsp
+			</result>
+		</action>
+
+
+	</package>
+	
+	
+	
 	<!-- manager包 -->
 	<package name="manager" namespace="/manager" extends="base">
 		<result-types>
@@ -208,145 +348,6 @@
 			<result type="chart">
 				<param name="width">700</param>
 				<param name="height">400</param>
-			</result>
-		</action>
-
-	</package>
-
-
-	<!-- servant包 -->
-	<package name="servant" namespace="/servant" extends="base">
-		<default-action-ref name="all-events" />
-
-		<!-- 默认服务员主页 -->
-		<action name="servant-home" class="eventAction" method="getServantAllEvents">
-			<result name="toAllEvents">
-				/servant-pages/servant-all-events.jsp
-			</result>
-		</action>
-
-		<!-- 所有活动 -->
-		<action name="all-events" class="eventAction" method="getServantAllEvents">
-			<result name="toAllEvents">
-				/servant-pages/servant-all-events.jsp
-			</result>
-		</action>
-
-		<!-- 活动编辑/添加页面 -->
-		<action name="edit-event" class="eventEditAction" method="editEvent">
-			<result name="toEventEdit">
-				/servant-pages/edit-event.jsp
-			</result>
-		</action>
-
-
-		<!-- 编辑活动提交 -->
-		<action name="submit-event" class="eventEditAction" method="submitEvent">
-			<result name="toAllEvents" type="chain">
-				<param name="actionName">all-events</param>
-			</result>
-		</action>
-
-
-		<!-- 会员信息 -->
-		<action name="user-info" class="userInfoAction" method="getServantUserInfo">
-			<result name="toUserInfo">
-				/servant-pages/user-info.jsp
-			</result>
-		</action>
-
-		<!-- 获取完结的活动 -->
-		<action name="closed-events" class="eventAction" method="getClosedEvents">
-			<result name="toClosedEvents">
-				/servant-pages/closed-events.jsp
-			</result>
-		</action>
-
-
-	</package>
-
-
-	<!-- user包 -->
-	<package name="user" namespace="/user" extends="base">
-		<default-action-ref name="user-home" />
-
-		<!-- 默认用户主页 -->
-		<action name="user-home" class="indexAction" method="getUserIndex">
-			<result>
-				/user-pages/user-index.jsp
-			</result>
-		</action>
-
-		<!-- 所有活动 -->
-		<action name="all-events" class="eventAction" method="getUserAllEvents">
-			<result name="toAllEvents">
-				/user-pages/user-all-events.jsp
-			</result>
-		</action>
-
-		<!-- 已预约活动 -->
-		<action name="reserved-events" class="eventAction" method="getReservedActiveEvents">
-			<result name="toReservedEvents">
-				/user-pages/user-reserved-events.jsp
-			</result>
-		</action>
-
-		<!-- 预约新活动 -->
-		<action name="reserve-new-events" class="eventAction" method="reserveNewEvents">
-			<result name="toReservableEvents">
-				/user-pages/user-new-events.jsp
-			</result>
-		</action>
-
-
-		<!-- 会员信息 -->
-		<action name="user-info" class="userInfoAction" method="getUserInfo">
-			<result name="toUserInfo">
-				/user-pages/user-info.jsp
-			</result>
-		</action>
-
-		<!-- 信息修改 -->
-		<action name="modify-info" class="userInfoAction" method="modifyInfo">
-			<result name="toUserInfo">
-				/user-pages/user-info.jsp
-			</result>
-		</action>
-
-		<!-- 用户激活 -->
-		<action name="activate-membership" class="paymentAction"
-			method="activateMembership">
-			<result name="toUserInfo">
-				/user-pages/user-info.jsp
-			</result>
-		</action>
-
-
-		<!-- 会员资格取消 -->
-		<action name="cancel-membership" class="userInfoAction" method="cancelMembership">
-			<result name="toUserInfo">
-				/user-pages/user-info.jsp
-			</result>
-		</action>
-
-
-		<!-- 用户续费 -->
-		<action name="recover-membership" class="paymentAction" method="recoverMembership">
-			<result name="toUserInfo">
-				/user-pages/user-info.jsp
-			</result>
-		</action>
-
-
-		<!-- 预定/取消预定 -->
-		<action name="reserve-event" class="reserveAction" method="reserve">
-			<result name="toReservedEvents" type="chain">
-				<param name="actionName">reserved-events</param>
-			</result>
-			
-			<!-- 如果用户没有权限 -->
-			<result name="toReservedEventsAlert">
-				/user-pages/user-reserved-events.jsp
 			</result>
 		</action>
 

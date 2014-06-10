@@ -2,13 +2,13 @@ package util;
 
 import java.util.Calendar;
 
-import logic.logicInterface.IEventService;
-import logic.logicInterface.IUserService;
+import logic.logicInterface.EventService;
+import logic.logicInterface.UserService;
 
 public class RoundTimer {
 	private Thread roundTimerThread;
-	private IUserService userService;
-	private IEventService eventService;
+	private UserService userService;
+	private EventService eventService;
 	
 	private Calendar signCalendar;
 	
@@ -102,19 +102,19 @@ public class RoundTimer {
 	}
 
 
-	public IUserService getUserService() {
+	public UserService getUserService() {
 		return userService;
 	}
 
-	public void setUserService(IUserService userService) {
+	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 
-	public IEventService getEventService() {
+	public EventService getEventService() {
 		return eventService;
 	}
 
-	public void setEventService(IEventService eventService) {
+	public void setEventService(EventService eventService) {
 		this.eventService = eventService;
 	}
 	

@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
 
-import logic.logicInterface.IEventService;
+import logic.logicInterface.EventService;
 import model.Coach;
 import model.Event;
 import model.Place;
@@ -14,7 +14,7 @@ import model.Place;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class EventEditAction extends ActionSupport implements RequestAware{
-	private IEventService eventService;
+	private EventService eventService;
 	
 	private Map<String, Object> request;
 	
@@ -56,11 +56,11 @@ public class EventEditAction extends ActionSupport implements RequestAware{
 	}
 	
 
-	public IEventService getEventService() {
+	public EventService getEventService() {
 		return eventService;
 	}
 
-	public void setEventService(IEventService eventService) {
+	public void setEventService(EventService eventService) {
 		this.eventService = eventService;
 	}
 	

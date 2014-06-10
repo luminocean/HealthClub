@@ -3,16 +3,16 @@ package logic.logicImpl;
 import java.util.List;
 
 import util.RegisterType;
-import dao.daoInterface.IUserDao;
-import logic.logicInterface.IUserService;
+import dao.daoInterface.UserDao;
+import logic.logicInterface.UserService;
 import model.ModifiedUser;
 import model.RegisterUser;
 import model.Staff;
 import model.User;
 import model.UserDetail;
 
-public class UserServiceImpl implements IUserService {
-	private IUserDao userDao;
+public class UserServiceImpl implements UserService {
+	private UserDao userDao;
 	
 	@Override
 	public User getUser(String account, String password) {
@@ -28,11 +28,11 @@ public class UserServiceImpl implements IUserService {
 		return user;
 	}
 
-	public IUserDao getUserDao() {
+	public UserDao getUserDao() {
 		return userDao;
 	}
 
-	public void setUserDao(IUserDao userDao) {
+	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
 

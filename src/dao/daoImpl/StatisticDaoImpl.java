@@ -20,9 +20,9 @@ import org.hibernate.SQLQuery;
 
 import model.Coach;
 import model.Place;
-import dao.daoInterface.IStatisticDao;
+import dao.daoInterface.StatisticDao;
 
-public class StatisticDaoImpl implements IStatisticDao {
+public class StatisticDaoImpl implements StatisticDao {
 	private EntityManagerFactory emf;
 
 	

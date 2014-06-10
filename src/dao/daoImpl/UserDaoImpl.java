@@ -24,9 +24,9 @@ import model.RegisterUser;
 import model.Staff;
 import model.User;
 import model.UserDetail;
-import dao.daoInterface.IUserDao;
+import dao.daoInterface.UserDao;
 
-public class UserDaoImpl implements IUserDao{
+public class UserDaoImpl implements UserDao{
 	private EntityManagerFactory emf;
 	private int overdueMax;
 	

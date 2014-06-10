@@ -7,9 +7,15 @@ import model.Coach;
 import model.Event;
 import model.Place;
 
-public interface IEventDao {
+public interface EventDao {
 	public List<Event> getAllActiveEvents();
 
+
+	/**
+	 * 获取所有当前未失效的活动
+	 * @param account 标记对于该用户是否已经预约该活动
+	 * @return
+	 */
 	public List<Event> getAllActiveEvents(String account);
 
 	public List<Event> getReservedEvents(String account);

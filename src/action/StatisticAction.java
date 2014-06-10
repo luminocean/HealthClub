@@ -7,10 +7,10 @@ import org.apache.struts2.interceptor.RequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import logic.logicInterface.IStatisticService;
+import logic.logicInterface.StatisticService;
 
 public class StatisticAction extends ActionSupport implements RequestAware{
-	private IStatisticService statisticService;
+	private StatisticService statisticService;
 	
 	private String diagramJson;
 	private Map<String, Object> request;
@@ -46,11 +46,11 @@ public class StatisticAction extends ActionSupport implements RequestAware{
 	}
 	
 	
-	public IStatisticService getStatisticService() {
+	public StatisticService getStatisticService() {
 		return statisticService;
 	}
 
-	public void setStatisticService(IStatisticService statisticService) {
+	public void setStatisticService(StatisticService statisticService) {
 		this.statisticService = statisticService;
 	}
 

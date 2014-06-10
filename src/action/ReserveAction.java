@@ -7,13 +7,13 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.usertype.UserType;
 
 import util.UserStateType;
-import logic.logicInterface.IEventService;
+import logic.logicInterface.EventService;
 import model.User;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ReserveAction extends ActionSupport implements RequestAware,SessionAware{
-	private IEventService eventService;
+	private EventService eventService;
 	
 	private Map<String, Object> requestMap;
 	private Map<String, Object> sessionMap;
@@ -71,7 +71,7 @@ public class ReserveAction extends ActionSupport implements RequestAware,Session
 		this.eventId = eventId;
 	}
 
-	public void setEventService(IEventService eventService) {
+	public void setEventService(EventService eventService) {
 		this.eventService = eventService;
 	}
 

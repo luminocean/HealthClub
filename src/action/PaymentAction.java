@@ -2,7 +2,7 @@ package action;
 
 import java.util.Map;
 
-import logic.logicInterface.IUserService;
+import logic.logicInterface.UserService;
 import model.User;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -15,7 +15,7 @@ public class PaymentAction extends ActionSupport implements SessionAware{
 	private String creditCardAccount;
 	private Integer months;
 	
-	private IUserService userService;
+	private UserService userService;
 	private Map<String, Object> session;
 	
 	
@@ -81,11 +81,11 @@ public class PaymentAction extends ActionSupport implements SessionAware{
 		this.months = months;
 	}
 
-	public IUserService getUserService() {
+	public UserService getUserService() {
 		return userService;
 	}
 
-	public void setUserService(IUserService userService) {
+	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 	

@@ -9,7 +9,7 @@ import model.Staff;
 import model.User;
 import model.UserDetail;
 
-public interface IUserService {
+public interface UserService {
 	public User getUser(String account, String password);
 	
 	public User getUser(String requestUserCode);

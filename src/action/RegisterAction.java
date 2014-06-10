@@ -7,7 +7,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import util.RegisterType;
-import logic.logicInterface.IUserService;
+import logic.logicInterface.UserService;
 import model.RegisterUser;
 import model.User;
 import model.UserDetail;
@@ -17,7 +17,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.util.ValueStack;
 
 public class RegisterAction extends ActionSupport implements SessionAware{
-	private IUserService userService;
+	private UserService userService;
 	
 	
 	private RegisterUser registerUser;
@@ -86,10 +86,10 @@ public class RegisterAction extends ActionSupport implements SessionAware{
 	}
 	
 	
-	public IUserService getUserService() {
+	public UserService getUserService() {
 		return userService;
 	}
-	public void setUserService(IUserService userService) {
+	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 

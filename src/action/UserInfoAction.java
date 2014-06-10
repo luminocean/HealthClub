@@ -6,8 +6,8 @@ import java.util.Map;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-import logic.logicInterface.IEventService;
-import logic.logicInterface.IUserService;
+import logic.logicInterface.EventService;
+import logic.logicInterface.UserService;
 import model.Event;
 import model.ModifiedUser;
 import model.User;
@@ -15,8 +15,8 @@ import model.User;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserInfoAction extends ActionSupport implements SessionAware, RequestAware{
-	private IUserService userService;
-	private IEventService eventService;
+	private UserService userService;
+	private EventService eventService;
 	
 	private Map<String, Object> session;
 	private Map<String, Object> request;
@@ -89,11 +89,11 @@ public class UserInfoAction extends ActionSupport implements SessionAware, Reque
 	}
 
 
-	public IUserService getUserService() {
+	public UserService getUserService() {
 		return userService;
 	}
 
-	public void setUserService(IUserService userService) {
+	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 
@@ -107,11 +107,11 @@ public class UserInfoAction extends ActionSupport implements SessionAware, Reque
 		this.request = request;
 	}
 
-	public IEventService getEventService() {
+	public EventService getEventService() {
 		return eventService;
 	}
 
-	public void setEventService(IEventService eventService) {
+	public void setEventService(EventService eventService) {
 		this.eventService = eventService;
 	}
 

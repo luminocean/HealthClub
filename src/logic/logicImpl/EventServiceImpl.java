@@ -5,22 +5,22 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
-import dao.daoInterface.IEventDao;
-import dao.daoInterface.IUserDao;
-import logic.logicInterface.IEventService;
+import dao.daoInterface.EventDao;
+import dao.daoInterface.UserDao;
+import logic.logicInterface.EventService;
 import model.Coach;
 import model.Event;
 import model.Occasion;
 import model.Place;
 
-public class EventServiceImpl implements IEventService {
-	private IEventDao eventDao;
+public class EventServiceImpl implements EventService {
+	private EventDao eventDao;
 	
 	/**
 	 * Spring注入
 	 * @param eventDao
 	 */
-	public void setEventDao(IEventDao eventDao) {
+	public void setEventDao(EventDao eventDao) {
 		this.eventDao = eventDao;
 	}
 	

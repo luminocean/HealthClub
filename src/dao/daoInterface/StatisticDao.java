@@ -6,7 +6,7 @@ import java.util.Map;
 import model.Coach;
 import model.Place;
 
-public interface IStatisticDao {
+public interface StatisticDao {
 
 	List<Place> getPlaceListInOrder();
 

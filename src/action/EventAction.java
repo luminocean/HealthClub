@@ -3,7 +3,7 @@ package action;
 import java.util.List;
 import java.util.Map;
 
-import logic.logicInterface.IEventService;
+import logic.logicInterface.EventService;
 import model.Event;
 import model.User;
 
@@ -13,7 +13,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class EventAction extends ActionSupport implements RequestAware,SessionAware{
-	private IEventService eventService;
+	private EventService eventService;
 	
 	private Map<String, Object> requestMap;
 	private Map<String, Object> sessionMap;
@@ -101,11 +101,11 @@ public class EventAction extends ActionSupport implements RequestAware,SessionAw
 		this.sessionMap = sessionMap;
 	}
 
-	public IEventService getEventService() {
+	public EventService getEventService() {
 		return eventService;
 	}
 
-	public void setEventService(IEventService eventService) {
+	public void setEventService(EventService eventService) {
 		this.eventService = eventService;
 	}
 

@@ -13,20 +13,20 @@ import org.jfree.data.time.Month;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 
-import dao.daoInterface.IStatisticDao;
-import logic.logicInterface.IStatisticService;
+import dao.daoInterface.StatisticDao;
+import logic.logicInterface.StatisticService;
 import model.Coach;
 import model.Place;
 
-public class StatisticServiceImpl implements IStatisticService {
-	private IStatisticDao statisticDao;
+public class StatisticServiceImpl implements StatisticService {
+	private StatisticDao statisticDao;
 
 	
-	public IStatisticDao getStatisticDao() {
+	public StatisticDao getStatisticDao() {
 		return statisticDao;
 	}
 
-	public void setStatisticDao(IStatisticDao statisticDao) {
+	public void setStatisticDao(StatisticDao statisticDao) {
 		this.statisticDao = statisticDao;
 	}
 

@@ -9,7 +9,7 @@ import model.Staff;
 import model.User;
 import model.UserDetail;
 
-public interface IUserDao {
+public interface UserDao {
 	public User getUser(String account, String password);
 	
 	public User getUser(String requestUserCode);

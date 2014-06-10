@@ -6,7 +6,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.time.TimeSeriesCollection;
 
-public interface IStatisticService {
+public interface StatisticService {
 
 	DefaultCategoryDataset getPlaceData();
 

@@ -2,7 +2,7 @@ package action.chart;
 
 import java.awt.Font;
 
-import logic.logicInterface.IStatisticService;
+import logic.logicInterface.StatisticService;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
@@ -25,7 +25,7 @@ public class BarChartAction extends ActionSupport {
 	private String yAxis;
 	
 	private JFreeChart chart;
-	private IStatisticService statisticService;
+	private StatisticService statisticService;
 
 	public JFreeChart getChart() {
 
@@ -152,12 +152,12 @@ public class BarChartAction extends ActionSupport {
 	}
 
 
-	public IStatisticService getStatisticService() {
+	public StatisticService getStatisticService() {
 		return statisticService;
 	}
 
 
-	public void setStatisticService(IStatisticService statisticService) {
+	public void setStatisticService(StatisticService statisticService) {
 		this.statisticService = statisticService;
 	}
 	
