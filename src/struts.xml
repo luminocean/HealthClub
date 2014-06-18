@@ -7,6 +7,7 @@
 
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="dictionary" />
 
 	<!-- 继承的基础package -->
 	<package name="base" extends="struts-default" abstract="true">

@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/general.css">
 
-<title>注册</title>
+<title><s:text name="register" /></title>
 
 <style type="text/css">
 .register-region,.login-region {
@@ -38,7 +38,18 @@
 			</div>
 
 			<!-- 导航栏正体 -->
-			<nav class="collapse navbar-collapse" id="nav-body"></nav>
+			<nav class="collapse navbar-collapse" id="nav-body">
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><s:text name="languageSwitch" /> <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="?request_locale=zh_CN">中文</a></li>
+							<li><a href="?request_locale=en_US">English</a></li>
+						</ul></li>
+				</ul>
+
+			</nav>
 
 		</div>
 		<!--End Container-->
@@ -51,7 +62,8 @@
 
 				<div class="page-header">
 					<h3>
-						注册 <small>如果还没有成为会员的话</small>
+						<s:text name="register" />
+						<small><s:text name="registerMsg" /></small>
 					</h3>
 				</div>
 
@@ -61,7 +73,8 @@
 					<div class="form-group">
 
 						<!-- 邮箱 -->
-						<label for="inputEmail3" class="col-md-3 control-label">邮箱</label>
+						<label for="inputEmail3" class="col-md-3 control-label"><s:text
+								name="email" /></label>
 						<div class="col-md-9">
 							<input type="email" class="form-control" id="inputEmail3"
 								placeholder="Email" name="registerUser.email">
@@ -70,29 +83,32 @@
 
 					<div class="form-group">
 
-						<!-- 邮箱 -->
-						<label for="inputEmail3" class="col-md-3 control-label">用户名</label>
+						<!-- 用户名 -->
+						<label for="inputEmail3" class="col-md-3 control-label"><s:text
+								name="userName" /></label>
 						<div class="col-md-9">
 							<input type="text" class="form-control" id="inputName"
-								placeholder="Name" name="registerUser.name">
+								placeholder="<s:text name="userName" />" name="registerUser.name">
 						</div>
 					</div>
 
 					<!-- 密码 -->
 					<div class="form-group">
-						<label for="inputPassword3" class="col-md-3 control-label">密码</label>
+						<label for="inputPassword3" class="col-md-3 control-label"><s:text
+								name="password" /></label>
 						<div class="col-md-9">
 							<input type="password" class="form-control" id="inputPassword3"
-								placeholder="Password" name="registerUser.password">
+								placeholder="<s:text name="password" />" name="registerUser.password">
 						</div>
 					</div>
 
 					<!-- 密码确认 -->
 					<div class="form-group">
-						<label for="inputPassword3" class="col-md-3 control-label">密码确认</label>
+						<label for="inputPassword3" class="col-md-3 control-label"><s:text
+								name="passwordConfirm" /></label>
 						<div class="col-md-9">
 							<input type="password" class="form-control" id="inputPassword3"
-								placeholder="Password" name="registerUser.passwordConfirm">
+								placeholder="<s:text name="passwordConfirm" />" name="registerUser.passwordConfirm">
 						</div>
 					</div>
 
@@ -100,14 +116,17 @@
 
 					<div id="register-btn-group" class="form-group">
 						<div class="pull-right">
-							<button id="register-btn" type="submit" class="btn btn-default">注册</button>
+							<button id="register-btn" type="submit" class="btn btn-default">
+								<s:text name="register" />
+							</button>
 						</div>
 					</div>
 
 				</form>
 
 				<p>
-					<a id="add-new" class="glyphicon glyphicon-plus-sign"> 添加顾客详细信息</a>
+					<a id="add-new" class="glyphicon glyphicon-plus-sign"> <s:text
+							name="addGuestDetail" /></a>
 				</p>
 			</div>
 
@@ -117,7 +136,8 @@
 			<div class="login-region">
 				<div class="page-header">
 					<h3>
-						登录 <small>已经拥有账户的话</small>
+						<s:text name="login" />
+						<small><s:text name="loginMsg" /></small>
 					</h3>
 				</div>
 
@@ -127,15 +147,16 @@
 						<s:property value="value[0]" />
 					</s:iterator>
 				</s:if>
-				
-				<s:property value="#request.msg"/>
+
+				<s:property value="#request.msg" />
 
 				<!-- 登录表单 -->
 				<form class="form-horizontal" action="login" method="post">
 					<div class="form-group">
 
 						<!-- 邮箱 -->
-						<label for="inputEmail3" class="col-md-3 control-label">邮箱</label>
+						<label for="inputEmail3" class="col-md-3 control-label"><s:text
+								name="email" /></label>
 						<div class="col-md-9">
 							<input type="email" class="form-control" id="inputEmail3"
 								placeholder="Email" name="email">
@@ -144,7 +165,8 @@
 
 					<!-- 密码 -->
 					<div class="form-group">
-						<label for="inputPassword3" class="col-md-3 control-label">密码</label>
+						<label for="inputPassword3" class="col-md-3 control-label"><s:text
+								name="password" /></label>
 						<div class="col-md-9">
 							<input type="password" class="form-control" id="inputPassword3"
 								placeholder="Password" name="password">
@@ -154,14 +176,13 @@
 
 					<div class="form-group">
 						<div class="pull-right">
-							<button id="register-btn" type="submit" class="btn btn-default">登录</button>
+							<button id="register-btn" type="submit" class="btn btn-default">
+								<s:text name="login" />
+							</button>
 						</div>
 					</div>
 				</form>
 			</div>
-
-
-
 
 
 			<!-- <a href="user/user-home">用户界面</a> <a href="servant/">服务员界面</a> <a
@@ -172,31 +193,33 @@
 				<p>__________________________________________________</p>
 
 				<div class="form-group">
-					<label class="col-md-3 control-label">客户名</label>
+					<label class="col-md-3 control-label"><s:text
+							name="userName" /></label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" placeholder="用户名"
+						<input type="text" class="form-control"
+							placeholder="<s:text name="guestName" />"
 							name="registerUser.guestNames" />
 					</div>
 
-					<label class="col-md-2 control-label">年龄</label>
+					<label class="col-md-2 control-label"><s:text name="age" /></label>
 					<div class="col-md-3">
-						<input type="number" class="form-control" placeholder="年龄"
-							name="registerUser.ages" />
+						<input type="number" class="form-control"
+							placeholder="<s:text name="age" />" name="registerUser.ages" />
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="col-md-offset-1 col-md-2 control-label">性别</label> <label
-						class="col-md-1 control-label"></label> 
-					
+					<label class="col-md-offset-1 col-md-2 control-label"><s:text
+							name="sex" /></label> <label class="col-md-1 control-label"></label>
+
 					<div class="col-md-offset-5 col-md-4">
 						<select class="form-control col-md-1" name="registerUser.sexes">
-							<option value="male">男</option>
-							<option value="female">女</option>
+							<option value="male"><s:text name="male" /></option>
+							<option value="female"><s:text name="female" /></option>
 						</select>
 					</div>
-					
-					
+
+
 
 					<!-- <input type="radio" name="registerUser.sexes" value="male"> 
 					<label class="control-label">男</label>
@@ -205,9 +228,11 @@
 				</div>
 
 				<div class="form-group">
-					<label class="col-md-3 control-label">居住地</label>
+					<label class="col-md-3 control-label"><s:text
+							name="livingPlace" /></label>
 					<div class="col-md-9">
-						<input type="text" class="form-control" placeholder="居住地"
+						<input type="text" class="form-control"
+							placeholder="<s:text name="livingPlace" />"
 							name="registerUser.livingPlaces" />
 					</div>
 				</div>
@@ -218,11 +243,8 @@
 	</div>
 
 
-	<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"
-		type="text/javascript"></script>
-	<script
-		src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"
-		type="text/javascript"></script>
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 
 
 
