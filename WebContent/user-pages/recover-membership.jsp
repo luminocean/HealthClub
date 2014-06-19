@@ -11,16 +11,16 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"
 					aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="eventModalLabel">${param.type}续费</h4>
+				<h4 class="modal-title" id="eventModalLabel">${param.type}<s:text name="repay" /></h4>
 			</div>
 
 			<form class="form-horizontal" method="post" action="user/recover-membership">
 				<div class="modal-body">
 
 					<div class="form-group">
-						<label class="col-md-3 control-label">${param.type}续费支付</label>
+						<label class="col-md-3 control-label">${param.type}<s:text name="repayPayment" /></label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" placeholder="银行卡号"
+							<input type="text" class="form-control" placeholder="<s:text name="creditcardNumber" />"
 								name="creditCardAccount">
 						</div>
 						<div class="col-md-3"></div>
@@ -43,8 +43,8 @@
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-					<button type="submit" class="btn btn-primary">确认支付</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"><s:text name="close" /></button>
+					<button type="submit" class="btn btn-primary"><s:text name="confirmPayment" /></button>
 				</div>
 			</form>
 		</div>

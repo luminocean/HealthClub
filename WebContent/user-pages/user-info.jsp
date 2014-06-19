@@ -72,7 +72,7 @@
 				<!-- 广告 -->
 				<div class="row">
 					<div class="banner">
-						<p class="banner-word">自分の限界をしりたいのか？</p>
+						<p class="banner-word"><s:text name="bannerMsg" /></p>
 					</div>
 				</div>
 
@@ -92,9 +92,9 @@
 						<div class="info-tab">
 							<ul id="myTab" class="nav nav-tabs info-tab-header">
 								<li class="active"><a href="#normal-card-info"
-									data-toggle="tab">会员信息</a></li>
-								<li><a href="#event-history" data-toggle="tab">历史活动</a></li>
-								<li><a href="#payment-history" data-toggle="tab">缴费信息</a></li>
+									data-toggle="tab"><s:text name="memberInfo" /></a></li>
+								<li><a href="#event-history" data-toggle="tab"><s:text name="closedEvents" /></a></li>
+								<li><a href="#payment-history" data-toggle="tab"><s:text name="paymentInfo" /></a></li>
 							</ul>
 
 							<div id="myTabContent" class="tab-content">
@@ -113,7 +113,7 @@
 										<p>
 											<span class="glyphicon glyphicon-tasks"></span>
 											<s:property value="stringType" />
-											会员编号：
+											<s:text name="membershipNumber" />：
 											<s:property value="code" />
 											
 
@@ -121,22 +121,22 @@
 										<p>
 											<span class="glyphicon glyphicon-flag"></span>
 											<s:property value="stringType" />
-											会员名：
+											<s:text name="userName" />：
 											<s:property value="name" />
 
 											<a class="btn btn-default" data-toggle="modal"
-												data-target="#modifyModal">资料修改</a>
+												data-target="#modifyModal"><s:text name="modifyInfo" /></a>
 
 										</p>
 										<p>
-											<span class="glyphicon glyphicon-inbox"></span> 账户状态：
+											<span class="glyphicon glyphicon-inbox"></span> <s:text name="accountState" />：
 											<s:property value="stringState" />
 
 
 											<!-- 如果状态是未激活那么就不应该有续费按钮 -->
 											<s:if test="stringState=='已欠费'">
 												<a id="recover-btn" class="btn btn-default"
-													data-toggle="modal" data-target="#recoverModal">续费</a>
+													data-toggle="modal" data-target="#recoverModal"><s:text name="repay" /></a>
 											</s:if>
 
 										</p>
@@ -144,15 +144,15 @@
 
 										<!-- 顾客详情列表 -->
 										<div class="table-responsive">
-											<span class="glyphicon glyphicon-list-alt"></span> 顾客详细信息：
+											<span class="glyphicon glyphicon-list-alt"></span> <s:text name="guestDetail" />：
 											<table class="table">
 												<thead>
 													<tr>
 														<th></th>
-														<th>姓名</th>
-														<th>年龄</th>
-														<th>性别</th>
-														<th>居住地</th>
+														<th><s:text name="guestName" /></th>
+														<th><s:text name="age" /></th>
+														<th><s:text name="sex" /></th>
+														<th><s:text name="livingPlace" /></th>
 													</tr>
 												</thead>
 												<tbody>
@@ -174,7 +174,7 @@
 												<form action="user/cancel-membership" method="post">
 													<input type="hidden" value='<s:property value="id"/>'/>
 													<button class="btn btn-default" type="submit">
-														会员注销
+														<s:text name="closeMembership" />
 													</button>
 												</form>
 											</s:if>
@@ -199,9 +199,9 @@
 									<table class="table table-responsive">
 										<thead>
 											<tr>
-												<th>编号</th>
-												<th>付费时间</th>
-												<th>金额</th>
+												<th><s:text name="paymentNumber" /></th>
+												<th><s:text name="paymentTime" /></th>
+												<th><s:text name="paymentAmount" /></th>
 											</tr>
 										</thead>
 										<tbody>
@@ -234,7 +234,7 @@
 					<!-- 缴费支援面板 -->
 					<s:include value="recover-membership.jsp">
 						<s:param name="modalId">recoverModal</s:param>
-						<s:param name="type">个人</s:param>
+						<s:param name="type"><s:text name="personal" /></s:param>
 					</s:include>
 
 
@@ -247,7 +247,7 @@
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal"
 										aria-hidden="true">&times;</button>
-									<h4 class="modal-title" id="eventModalLabel">资料修改</h4>
+									<h4 class="modal-title" id="eventModalLabel"><s:text name="modifyInfo" /></h4>
 								</div>
 
 
@@ -260,7 +260,7 @@
 										<div class="modal-body">
 
 											<div class="form-group">
-												<label class="col-md-3 control-label">会员名</label>
+												<label class="col-md-3 control-label"><s:text name="userName" /></label>
 												<div class="col-md-6">
 													<input type="text" class="form-control"
 														name="modifiedUser.newUserName" value='<s:property value="name"/>'>
@@ -268,7 +268,7 @@
 											</div>
 
 											<div class="form-group">
-												<label class="col-md-3 control-label">原密码</label>
+												<label class="col-md-3 control-label"><s:text name="oldPassword" /></label>
 												<div class="col-md-6">
 													<input type="text" class="form-control"
 														name="modifiedUser.oldPassword">
@@ -276,7 +276,7 @@
 											</div>
 
 											<div class="form-group">
-												<label class="col-md-3 control-label">新密码</label>
+												<label class="col-md-3 control-label"><s:text name="newPassword" /></label>
 												<div class="col-md-6">
 													<input type="text" class="form-control"
 														name="modifiedUser.newPassword">
@@ -284,7 +284,7 @@
 											</div>
 
 											<div class="form-group">
-												<label class="col-md-3 control-label">新密码确认</label>
+												<label class="col-md-3 control-label"><s:text name="newPasswordConfirm" /></label>
 												<div class="col-md-6">
 													<input type="text" class="form-control"
 														name="modifiedUser.confirmPassword">
@@ -295,8 +295,8 @@
 
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default"
-												data-dismiss="modal">关闭</button>
-											<button type="submit" class="btn btn-primary">确认修改</button>
+												data-dismiss="modal"><s:text name="close" /></button>
+											<button type="submit" class="btn btn-primary"><s:text name="modifyConfim" /></button>
 										</div>
 									</form>
 

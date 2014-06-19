@@ -7,7 +7,7 @@
 		<span class="glyphicon glyphicon-hand-right"></span>
 
 		<s:if test="reserved">
-			<span class="label label-warning">已预约</span>
+			<span class="label label-warning"><s:text name="reserved" /></span>
 		</s:if>
 	
 	
@@ -24,11 +24,11 @@
 
 	</p>
 	<p>
-		已预约人数：
+		<s:text name="reservedNumber" />：
 		<s:property value="currentPeople" />
 	</p>
 	<p>
-		最近时间：
+		<s:text name="latestTime" />：
 		<s:property value="latestTime" />
 	</p>
 
@@ -40,12 +40,12 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="eventModalLabel">活动详情</h4>
+					<h4 class="modal-title" id="eventModalLabel"><s:text name="eventDetail" /></h4>
 				</div>
 
 				<div class="modal-body">
 					<p>
-						主题：
+						<s:text name="title" />：
 						<s:property value="title" />
 					</p>
 					
@@ -54,17 +54,17 @@
 					</p>
 					
 					<p>
-						已预约人数：
+						<s:text name="reservedNumber" />：
 						<s:property value="currentPeople" />
 					</p>
 
 					<table class="table">
 						<thead>
 							<tr>
-								<th>场次</th>
-								<th>时间</th>
-								<th>教练</th>
-								<th>地点</th>
+								<th><s:text name="round" /></th>
+								<th><s:text name="time" /></th>
+								<th><s:text name="coach" /></th>
+								<th><s:text name="place" /></th>
 							</tr>
 						</thead>
 
@@ -89,15 +89,15 @@
 					<form action="user/reserve-event" method="post">
 						<input type="hidden" name="eventId" value='<s:property value="id"/>'>
 						
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal"><s:text name="close" /></button>
 
 						<s:if test="reserved">
-							<button type="submit" class="btn btn-primary">取消预约</button>
+							<button type="submit" class="btn btn-primary"><s:text name="cancelReservation" /></button>
 							<input type="hidden" name="toReserve" value="false">
 						</s:if>
 
 						<s:else>
-							<button type="submit" class="btn btn-primary">预约</button>
+							<button type="submit" class="btn btn-primary"><s:text name="reserve" /></button>
 							<input type="hidden" name="toReserve" value="true">
 						</s:else>
 					</form>

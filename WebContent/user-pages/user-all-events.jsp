@@ -38,7 +38,7 @@
         	<!-- 广告 -->
         	<div class="row">
             	<div class="banner">
-                	<p class="banner-word">自分の限界をしりたいのか？</p>
+                	<p class="banner-word"><s:text name="bannerMsg" /></p>
                 </div>
             </div>
             
@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="page-header">
                   
-                  <p class="page-title"><span class="glyphicon glyphicon-list" /> 当前所有活动</p>
+                  <p class="page-title"><span class="glyphicon glyphicon-list" /> <s:text name="allEventsAvailable" /></p>
                 </div>
                 
                 <!-- 迭代显示所有内容 -->

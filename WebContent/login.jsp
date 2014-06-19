@@ -77,7 +77,7 @@
 								name="email" /></label>
 						<div class="col-md-9">
 							<input type="email" class="form-control" id="inputEmail3"
-								placeholder="Email" name="registerUser.email">
+								placeholder="<s:text name="email" />" name="registerUser.email">
 						</div>
 					</div>
 
@@ -159,7 +159,7 @@
 								name="email" /></label>
 						<div class="col-md-9">
 							<input type="email" class="form-control" id="inputEmail3"
-								placeholder="Email" name="email">
+								placeholder="<s:text name="email" />" name="email">
 						</div>
 					</div>
 
@@ -169,7 +169,7 @@
 								name="password" /></label>
 						<div class="col-md-9">
 							<input type="password" class="form-control" id="inputPassword3"
-								placeholder="Password" name="password">
+								placeholder="<s:text name="password" />" name="password">
 						</div>
 					</div>
 

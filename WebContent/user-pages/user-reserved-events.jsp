@@ -40,14 +40,14 @@
         	<!-- 广告 -->
         	<div class="row">
             	<div class="banner">
-                	<p class="banner-word">自分の限界をしりたいのか？</p>
+                	<p class="banner-word"><s:text name="bannerMsg" /></p>
                 </div>
             </div>
             
             <!-- 正文 -->
             <div class="row">
                 <div class="page-header">
-                  <p class="page-title"><span class="glyphicon glyphicon-paperclip" /> 已预约的活动</p>
+                  <p class="page-title"><span class="glyphicon glyphicon-paperclip" /> <s:text name="allReservedEvents" /></p>
                 </div>
                 
                 
