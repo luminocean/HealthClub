@@ -28,6 +28,15 @@
 					<s:text name="search"></s:text>
 				</button>
 			</form>
+			
+			<ul class="nav navbar-nav">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><s:text name="languageSwitch" /> <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="user-home?request_locale=zh_CN">中文</a></li>
+							<li><a href="user-home?request_locale=en_US">English</a></li>
+						</ul></li>
+				</ul>
 
 			<!-- $导航栏的组件如果要垂直对齐往往需要navbar的特殊版本！-->
 

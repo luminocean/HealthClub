@@ -67,24 +67,24 @@ public class User {
 	public String getStringState(){
 		switch(this.state){
 		case NORMAL:
-			return "正常";
+			return "normal";
 		case INACTIVE:
-			return "未激活";
+			return "unactivated";
 		case OVERDUE:
-			return "已欠费";
+			return "unpaid";
 		default:
-			return "未知状态";
+			return "unknown";
 		}
 	}
 	
 	public String getStringType(){
 		switch(this.userType){
 		case SINGLE:
-			return "个人";
+			return "personal";
 		case FAMILY:
-			return "家庭";
+			return "family";
 		default:
-			return "未知类别";
+			return "unknown";
 		}
 	}
 	

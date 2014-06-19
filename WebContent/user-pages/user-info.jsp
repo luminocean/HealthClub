@@ -47,7 +47,6 @@
 	border-color: #5CB85C;
 	margin-left: 15px;
 }
-
 </style>
 </head>
 
@@ -72,7 +71,9 @@
 				<!-- 广告 -->
 				<div class="row">
 					<div class="banner">
-						<p class="banner-word"><s:text name="bannerMsg" /></p>
+						<p class="banner-word">
+							<s:text name="bannerMsg" />
+						</p>
 					</div>
 				</div>
 
@@ -93,8 +94,10 @@
 							<ul id="myTab" class="nav nav-tabs info-tab-header">
 								<li class="active"><a href="#normal-card-info"
 									data-toggle="tab"><s:text name="memberInfo" /></a></li>
-								<li><a href="#event-history" data-toggle="tab"><s:text name="closedEvents" /></a></li>
-								<li><a href="#payment-history" data-toggle="tab"><s:text name="paymentInfo" /></a></li>
+								<li><a href="#event-history" data-toggle="tab"><s:text
+											name="closedEvents" /></a></li>
+								<li><a href="#payment-history" data-toggle="tab"><s:text
+											name="paymentInfo" /></a></li>
 							</ul>
 
 							<div id="myTabContent" class="tab-content">
@@ -112,16 +115,18 @@
 
 										<p>
 											<span class="glyphicon glyphicon-tasks"></span>
-											<s:property value="stringType" />
-											<s:text name="membershipNumber" />：
+											<s:text name="%{stringType}" /><!-- <s:property value="stringType" /> -->
+											<s:text name="membershipNumber" />
+											：
 											<s:property value="code" />
-											
+
 
 										</p>
 										<p>
 											<span class="glyphicon glyphicon-flag"></span>
-											<s:property value="stringType" />
-											<s:text name="userName" />：
+											<s:text name="%{stringType}" /><!--<s:property value="stringType" /> -->
+											<s:text name="userName" />
+											：
 											<s:property value="name" />
 
 											<a class="btn btn-default" data-toggle="modal"
@@ -129,14 +134,17 @@
 
 										</p>
 										<p>
-											<span class="glyphicon glyphicon-inbox"></span> <s:text name="accountState" />：
-											<s:property value="stringState" />
+											<span class="glyphicon glyphicon-inbox"></span>
+											<s:text name="accountState" />
+											：
+											<s:text name="%{stringState}"></s:text><!-- <s:property value="stringState" /> -->
 
 
 											<!-- 如果状态是未激活那么就不应该有续费按钮 -->
 											<s:if test="stringState=='已欠费'">
 												<a id="recover-btn" class="btn btn-default"
-													data-toggle="modal" data-target="#recoverModal"><s:text name="repay" /></a>
+													data-toggle="modal" data-target="#recoverModal"><s:text
+														name="repay" /></a>
 											</s:if>
 
 										</p>
@@ -144,7 +152,9 @@
 
 										<!-- 顾客详情列表 -->
 										<div class="table-responsive">
-											<span class="glyphicon glyphicon-list-alt"></span> <s:text name="guestDetail" />：
+											<span class="glyphicon glyphicon-list-alt"></span>
+											<s:text name="guestDetail" />
+											：
 											<table class="table">
 												<thead>
 													<tr>
@@ -162,23 +172,24 @@
 															<td><span class="glyphicon glyphicon-user" /></td>
 															<td><s:property value="#detail.realName" /></td>
 															<td><s:property value="#detail.age" /></td>
-															<td><s:property value="#detail.stringSex" /></td>
+															<td><s:text name="%{#detail.stringSex}"></s:text></td>
+															<!-- <s:property value="#detail.stringSex" /> -->
 															<td><s:property value="#detail.livingPlace" /></td>
 														</tr>
 													</s:iterator>
 												</tbody>
 											</table>
 										</div>
-										
+
 										<s:if test="stringState=='正常'">
-												<form action="user/cancel-membership" method="post">
-													<input type="hidden" value='<s:property value="id"/>'/>
-													<button class="btn btn-default" type="submit">
-														<s:text name="closeMembership" />
-													</button>
-												</form>
-											</s:if>
-											
+											<form action="user/cancel-membership" method="post">
+												<input type="hidden" value='<s:property value="id"/>' />
+												<button class="btn btn-default" type="submit">
+													<s:text name="closeMembership" />
+												</button>
+											</form>
+										</s:if>
+
 
 									</s:push>
 								</div>
@@ -189,7 +200,7 @@
 									<!-- 迭代显示所有内容 -->
 									<s:iterator var="item" value="#request['closedEvents']"
 										status="status">
-											<s:include value="event-item-history.jsp"></s:include>
+										<s:include value="event-item-history.jsp"></s:include>
 									</s:iterator>
 
 								</div>
@@ -234,7 +245,9 @@
 					<!-- 缴费支援面板 -->
 					<s:include value="recover-membership.jsp">
 						<s:param name="modalId">recoverModal</s:param>
-						<s:param name="type"><s:text name="personal" /></s:param>
+						<s:param name="type">
+							<s:text name="personal" />
+						</s:param>
 					</s:include>
 
 
@@ -247,7 +260,9 @@
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal"
 										aria-hidden="true">&times;</button>
-									<h4 class="modal-title" id="eventModalLabel"><s:text name="modifyInfo" /></h4>
+									<h4 class="modal-title" id="eventModalLabel">
+										<s:text name="modifyInfo" />
+									</h4>
 								</div>
 
 
@@ -260,15 +275,18 @@
 										<div class="modal-body">
 
 											<div class="form-group">
-												<label class="col-md-3 control-label"><s:text name="userName" /></label>
+												<label class="col-md-3 control-label"><s:text
+														name="userName" /></label>
 												<div class="col-md-6">
 													<input type="text" class="form-control"
-														name="modifiedUser.newUserName" value='<s:property value="name"/>'>
+														name="modifiedUser.newUserName"
+														value='<s:property value="name"/>'>
 												</div>
 											</div>
 
 											<div class="form-group">
-												<label class="col-md-3 control-label"><s:text name="oldPassword" /></label>
+												<label class="col-md-3 control-label"><s:text
+														name="oldPassword" /></label>
 												<div class="col-md-6">
 													<input type="text" class="form-control"
 														name="modifiedUser.oldPassword">
@@ -276,7 +294,8 @@
 											</div>
 
 											<div class="form-group">
-												<label class="col-md-3 control-label"><s:text name="newPassword" /></label>
+												<label class="col-md-3 control-label"><s:text
+														name="newPassword" /></label>
 												<div class="col-md-6">
 													<input type="text" class="form-control"
 														name="modifiedUser.newPassword">
@@ -284,7 +303,8 @@
 											</div>
 
 											<div class="form-group">
-												<label class="col-md-3 control-label"><s:text name="newPasswordConfirm" /></label>
+												<label class="col-md-3 control-label"><s:text
+														name="newPasswordConfirm" /></label>
 												<div class="col-md-6">
 													<input type="text" class="form-control"
 														name="modifiedUser.confirmPassword">
@@ -295,8 +315,12 @@
 
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default"
-												data-dismiss="modal"><s:text name="close" /></button>
-											<button type="submit" class="btn btn-primary"><s:text name="modifyConfim" /></button>
+												data-dismiss="modal">
+												<s:text name="close" />
+											</button>
+											<button type="submit" class="btn btn-primary">
+												<s:text name="modifyConfim" />
+											</button>
 										</div>
 									</form>
 
@@ -323,9 +347,9 @@
 	<script
 		src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"
 		type="text/javascript"></script>-->
-		
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
 
 	<script type="text/javascript">
