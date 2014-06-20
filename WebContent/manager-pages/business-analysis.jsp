@@ -14,6 +14,16 @@
 <link rel="stylesheet" href="css/banner.css">
 <link rel="stylesheet" href="css/event.css">
 
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript" src="js/exporting.js"></script>
+<script type="text/javascript" src="js/highcharts-3d.js"></script>
+<script type="text/javascript" src="js/place-analysis.js"></script>
+<script type="text/javascript" src="js/coach-analysis.js"></script>
+<script type="text/javascript" src="js/peopleNumber-analysis.js"></script>
+
+
 <title>Health Club</title>
 
 </head>
@@ -44,6 +54,8 @@
 					</div>
 				</div>
 
+
+
 				<!-- 正文 -->
 				<div class="row">
 					<div class="col-md-10">
@@ -52,10 +64,13 @@
 								<span class="glyphicon glyphicon-list" /> 业务统计
 							</p>
 						</div>
-
-						<img src="manager/place-usage"/>
-						<img src="manager/coach-usage"/>
-						<img src="manager/month-usage"/>
+						
+						
+						<!-- 图表 -->
+						<div id="place-analysis" style="min-width:700px;height:400px"></div><br><br>
+						<div id="coach-analysis" style="min-width:700px;height:400px"></div><br><br>
+						<div id="peopleNumber-analysis" style="min-width:700px;height:400px"></div>
+						
 
 					</div>
 
@@ -67,22 +82,12 @@
 	</div>
 
 
-	<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"
-		type="text/javascript"></script>
-	<script
-		src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"
-		type="text/javascript"></script>
-
-	<script src="http://code.highcharts.com/highcharts.js"
-		type="text/javascript"></script>
-	<script src="http://code.highcharts.com/modules/exporting.js"
-		type="text/javascript"></script>
-
-
-
 	<script type="text/javascript">
 		$("#business-statistic-flag").attr("class", "active");
 	</script>
+
+
+
 	
 	
 	

@@ -258,7 +258,7 @@
 		<!-- 默认经理主页 -->
 		<action name="manager-home" class="indexAction" method="getServantIndex">
 			<result>
-				/manager-pages/business-statistic.jsp
+				/manager-pages/business-analysis.jsp
 			</result>
 		</action>
 

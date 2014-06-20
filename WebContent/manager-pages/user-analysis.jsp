@@ -14,6 +14,15 @@
 <link rel="stylesheet" href="css/banner.css">
 <link rel="stylesheet" href="css/event.css">
 
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript" src="js/exporting.js"></script>
+<script type="text/javascript" src="js/highcharts-3d.js"></script>
+<script type="text/javascript" src="js/age-analysis.js"></script>
+<script type="text/javascript" src="js/gender-analysis.js"></script>
+<script type="text/javascript" src="js/address-analysis.js"></script>
+<script type="text/javascript" src="js/status-analysis.js"></script>
+
 <title>Health Club</title>
 
 </head>
@@ -49,14 +58,16 @@
 					<div class="col-md-10">
 						<div class="page-header">
 							<p class="page-title">
-								<span class="glyphicon glyphicon-list" /> 业务统计
+								<span class="glyphicon glyphicon-list" /> 会员信息统计
 							</p>
 						</div>
 
-						<img src="manager/place-usage"/>
-						<img src="manager/coach-usage"/>
-						<img src="manager/month-usage"/>
-
+						
+						<!-- 图表 -->
+						<div id="age-analysis" style="min-width:700px;height:400px"></div><br><br>
+						<div id="gender-analysis" style="min-width:700px;height:400px"></div><br><br>
+						<div id="address-analysis" style="min-width:700px;height:400px"></div><br><br>
+						<div id="status-analysis" style="min-width:700px;height:400px"></div>
 					</div>
 
 				</div>
@@ -66,25 +77,9 @@
 		</div>
 	</div>
 
-
-	<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"
-		type="text/javascript"></script>
-	<script
-		src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"
-		type="text/javascript"></script>
-
-	<script src="http://code.highcharts.com/highcharts.js"
-		type="text/javascript"></script>
-	<script src="http://code.highcharts.com/modules/exporting.js"
-		type="text/javascript"></script>
-
-
-
 	<script type="text/javascript">
-		$("#business-statistic-flag").attr("class", "active");
+		$("#user-statistic-flag").attr("class", "active");
 	</script>
-	
-	
 	
 
 </body>
