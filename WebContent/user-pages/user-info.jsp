@@ -115,7 +115,8 @@
 
 										<p>
 											<span class="glyphicon glyphicon-tasks"></span>
-											<s:text name="%{stringType}" /><!-- <s:property value="stringType" /> -->
+											<s:text name="%{stringType}" />
+											<!-- <s:property value="stringType" /> -->
 											<s:text name="membershipNumber" />
 											：
 											<s:property value="code" />
@@ -124,20 +125,25 @@
 										</p>
 										<p>
 											<span class="glyphicon glyphicon-flag"></span>
-											<s:text name="%{stringType}" /><!--<s:property value="stringType" /> -->
+											<s:text name="%{stringType}" />
+											<!--<s:property value="stringType" /> -->
 											<s:text name="userName" />
 											：
 											<s:property value="name" />
 
-											<a class="btn btn-default" data-toggle="modal"
-												data-target="#modifyModal"><s:text name="modifyInfo" /></a>
+											<!-- <a class="btn btn-default" data-toggle="modal"
+												data-target="#modifyModal"><s:text name="modifyInfo" /></a> -->
+
+											&nbsp;<a class="glyphicon glyphicon-edit" data-toggle="modal"
+												data-target="#modifyModal"></a>
 
 										</p>
 										<p>
 											<span class="glyphicon glyphicon-inbox"></span>
 											<s:text name="accountState" />
 											：
-											<s:text name="%{stringState}"></s:text><!-- <s:property value="stringState" /> -->
+											<s:text name="%{stringState}"></s:text>
+											<!-- <s:property value="stringState" /> -->
 
 
 											<!-- 如果状态是未激活那么就不应该有续费按钮 -->
