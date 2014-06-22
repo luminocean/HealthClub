@@ -52,6 +52,7 @@ public class EventDaoImpl implements EventDao{
 	@Override
 	public List<Event> getAllActiveEvents(String account) {
 		List<Event> events = getAllActiveEvents();
+		
 		for( Event event: events ){
 			Set<User> users = event.getUsers();
 			

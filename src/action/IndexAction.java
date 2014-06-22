@@ -28,7 +28,10 @@ public class IndexAction extends ActionSupport implements RequestAware,SessionAw
 	public String getUserIndex(){
 		User user = (User)session.get("user");
 
-		List<Event> events = eventService.getReservableEvents(user.getAccount());
+		List<Event> events = eventService.getAllActiveEvents(user.getAccount());
+		if( events.size() == 0 ){
+			events = eventService.getAllClosedEvents();
+		}
 						
 		Random rand = new Random();
 		int randNum = rand.nextInt(events.size());

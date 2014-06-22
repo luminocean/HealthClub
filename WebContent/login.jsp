@@ -38,10 +38,25 @@
 			</div>
 
 			<!-- 导航栏正体 -->
-			<nav class="collapse navbar-collapse" id="nav-body"></nav>
+			<nav class="collapse navbar-collapse" id="nav-body">
+			<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><s:text name="languageSwitch" /> <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="?request_locale=zh_CN">中文</a></li>
+							<li><a href="?request_locale=en_US">English</a></li>
+						</ul></li>
+				</ul>
 
+			<!-- $导航栏的组件如果要垂直对齐往往需要navbar的特殊版本！-->
+		</nav>
+
+			
 		</div>
 		<!--End Container-->
+		
+		
+
 	</header>
 
 	<!-- 页面本体 -->
@@ -51,7 +66,7 @@
 
 				<div class="page-header">
 					<h3>
-						注册 <small>如果还没有成为会员的话</small>
+						<s:text name="register_cap"></s:text> <small><s:text name="registerMsg"></s:text></small>
 					</h3>
 				</div>
 
@@ -61,52 +76,52 @@
 					<div class="form-group">
 
 						<!-- 邮箱 -->
-						<label for="inputEmail3" class="col-md-3 control-label">邮箱</label>
+						<label for="inputEmail3" class="col-md-3 control-label"><s:text name="email"></s:text></label>
 						<div class="col-md-9">
 							<input type="text" class="form-control" id="EmailReg"
-								placeholder="Email" name="registerUser.email" onblur="blurRegEmail()">
-							<label id="reg-email-tips" style="color:#FF2D2D; display:none">邮箱格式应为***@***.***！</label>
+								placeholder="<s:text name="email"></s:text>" name="registerUser.email" onblur="blurRegEmail()">
+							<label id="reg-email-tips" style="color:#FF2D2D; display:none"><s:text name="noemail"></s:text></label>
 						</div>
 					</div>
 
 					<div class="form-group">
 
 						<!-- 邮箱 -->
-						<label for="inputEmail3" class="col-md-3 control-label">用户名</label>
+						<label for="inputEmail3" class="col-md-3 control-label"><s:text name="userName"></s:text></label>
 						<div class="col-md-9">
 							<input type="text" class="form-control" id="NameReg"
-								placeholder="Name" name="registerUser.name" onblur="blurRegNoInput(this)">
-							<label id="reg-name-tips" style="color:#FF2D2D; display:none">未填写！</label>
+								placeholder="<s:text name="userName"></s:text>" name="registerUser.name" onblur="blurRegNoInput(this)">
+							<label id="reg-name-tips" style="color:#FF2D2D; display:none"><s:text name="noinput"></s:text></label>
 						</div>
 					</div>
 
 					<!-- 密码 -->
 					<div class="form-group">
-						<label for="inputPassword3" class="col-md-3 control-label">密码</label>
+						<label for="inputPassword3" class="col-md-3 control-label"><s:text name="password"></s:text></label>
 						<div class="col-md-9">
 							<input type="password" class="form-control" id="PasswordReg"
-								placeholder="Password" name="registerUser.password" onblur="blurRegNoInput(this)">
-							<label id="reg-psw-tips" style="color:#FF2D2D; display:none">未填写！</label>
+								placeholder="<s:text name="password"></s:text>" name="registerUser.password" onblur="blurRegNoInput(this)">
+							<label id="reg-psw-tips" style="color:#FF2D2D; display:none"><s:text name="noinput"></s:text></label>
 						</div>
 					</div>
 
 					<!-- 密码确认 -->
 					<div class="form-group">
-						<label for="inputPassword3" class="col-md-3 control-label">密码确认</label>
+						<label for="inputPassword3" class="col-md-3 control-label"><s:text name="passwordConfirm"></s:text></label>
 						<div class="col-md-9">
 							<input type="password" class="form-control" id="RePasswordReg"
-								placeholder="Password" name="registerUser.passwordConfirm" onblur="blurRegRepsw()">
-							<label id="reg-repsw-tips" style="color:#FF2D2D; display:none">两次密码不匹配！</label>
+								placeholder="<s:text name="passwordConfirm"></s:text>" name="registerUser.passwordConfirm" onblur="blurRegRepsw()">
+							<label id="reg-repsw-tips" style="color:#FF2D2D; display:none"><s:text name="norepsw"></s:text></label>
 						</div>
 					</div>
 
 					<p>
-						<a id="add-new" class="glyphicon glyphicon-plus-sign"> 添加顾客详细信息</a>
+						<a id="add-new" class="glyphicon glyphicon-plus-sign"> <s:text name="addGuestDetail"></s:text></a>
 					</p>
 
 					<div id="register-btn-group" class="form-group">
 						<div class="pull-right">
-							<button id="register-btn" type="submit" class="btn btn-default">注册</button>
+							<button id="register-btn" type="submit" class="btn btn-default"><s:text name="register"></s:text></button>
 						</div>
 					</div>
 
@@ -121,7 +136,7 @@
 			<div class="login-region">
 				<div class="page-header">
 					<h3>
-						登录 <small>已经拥有账户的话</small>
+						<s:text name="login_cap"></s:text> <small><s:text name="loginMsg"></s:text></small>
 					</h3>
 				</div>
 
@@ -139,27 +154,27 @@
 					<div class="form-group">
 
 						<!-- 邮箱 -->
-						<label for="inputEmail3" class="col-md-3 control-label">邮箱</label>
+						<label for="inputEmail3" class="col-md-3 control-label"><s:text name="email"></s:text></label>
 						<div class="col-md-9">
 							<input type="text" class="form-control" id="emailLogin"
-								placeholder="Email" name="email" onblur="checkLoginEmail()">
-							<label id="login-email-tips" style="color:#FF5151; display:none">邮箱格式应为***@***.***！</label>
+								placeholder="<s:text name="register"></s:text>" name="email" onblur="checkLoginEmail()">
+							<label id="login-email-tips" style="color:#FF5151; display:none"><s:text name="noemail"></s:text></label>
 						</div>
 					</div>
 
 					<!-- 密码 -->
 					<div class="form-group">
-						<label for="inputPassword3" class="col-md-3 control-label">密码</label>
+						<label for="inputPassword3" class="col-md-3 control-label"><s:text name="password"></s:text></label>
 						<div class="col-md-9">
 							<input type="password" class="form-control" id="passwordLogin"
-								placeholder="Password" name="password">
+								placeholder="<s:text name="password"></s:text>" name="password">
 						</div>
 					</div>
 
 
 					<div class="form-group">
 						<div class="pull-right">
-							<button id="register-btn" type="submit" class="btn btn-default">登录</button>
+							<button id="register-btn" type="submit" class="btn btn-default"><s:text name="login"></s:text></button>
 						</div>
 					</div>
 				</form>
@@ -177,28 +192,28 @@
 				<p>_____________________________________________________</p>
 
 				<div class="form-group">
-					<label class="col-md-3 control-label">客户名</label>
+					<label class="col-md-3 control-label"><s:text name="guestName"></s:text></label>
 					<div class="col-md-9">
-						<input type="text" class="form-control" placeholder="username" id="username"
+						<input type="text" class="form-control" placeholder="<s:text name="guestName"></s:text>" id="username"
 							name="registerUser.guestNames" onblur="blurRegNoInput(this)" />
-						<label id="reg-username-tips" style="color:#FF2D2D; display:none">未填写！</label>
+						<label id="reg-username-tips" style="color:#FF2D2D; display:none"><s:text name="noinput"></s:text></label>
 					</div>
 					
 				</div>
 
 				<div class="form-group">
 				
-					<label class="col-md-3 control-label">年龄</label>
+					<label class="col-md-3 control-label"><s:text name="age"></s:text></label>
 					<div class="col-md-3">
-						<input type="text" class="form-control" placeholder="year" id="year"
+						<input type="text" class="form-control" placeholder="<s:text name="age"></s:text>" id="year"
 							name="registerUser.ages" onblur="blurRegYear(this)" />
 					</div>
 					
-					<label class="col-md-2 control-label">性别</label>
+					<label class="col-md-2 control-label"><s:text name="sex"></s:text></label>
 					<div class="col-md-4">
 						<select class="form-control col-md-1" name="registerUser.sexes">
-							<option value="male">男</option>
-							<option value="female">女</option>
+							<option value="male"><s:text name="male"></s:text></option>
+							<option value="female"><s:text name="female"></s:text></option>
 						</select>
 					</div>
 
@@ -211,69 +226,70 @@
 				<div class="form-group" id="reg-year-tips" style="display:none">
 					<label class="col-md-3 control-label"></label>
 					<div class="col-md-9">
-						<label  style="color:#FF2D2D;">年龄应输入正整数！</label>
+						<label  style="color:#FF2D2D;"><s:text name="noyear"></s:text></label>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="col-md-3 control-label">居住地</label>
+					<label class="col-md-3 control-label"><s:text name="livingPlace"></s:text></label>
 					<div class="col-md-9">
-						<input type="text" class="form-control" placeholder="Residence" id="residence"
+						<input type="text" class="form-control" placeholder="<s:text name="livingPlace"></s:text>" id="residence"
 							name="registerUser.livingPlaces" onblur="blurRegNoInput(this)" />
-						<label id="reg-residence-tips" style="color:#FF2D2D; display:none">未填写！</label>
+						<label id="reg-residence-tips" style="color:#FF2D2D; display:none"><s:text name="noinput"></s:text></label>
 					</div>
 				</div>
 				
-				<a onclick="del(this)" class="glyphicon glyphicon-remove" style="float:right;" > 删除该顾客</a>
+				<a onclick="del(this)" class="glyphicon glyphicon-remove" style="float:right;" > <s:text name="delGuestDetail"></s:text></a>
 			</div>
 			
 			<div id="guest-backup-first" class="detail-block">
 				<p>_____________________________________________________</p>
 
 				<div class="form-group">
-					<label class="col-md-3 control-label">客户名</label>
+					<label class="col-md-3 control-label"><s:text name="guestName"></s:text></label>
 					<div class="col-md-9">
-						<input type="text" class="form-control" placeholder="username" id="username"
-							name="registerUser.guestNames" onblur="blurRegNoInput(this)"/>
-						<label id="reg-username-tips" style="color:#FF2D2D; display:none">未填写！</label>
+						<input type="text" class="form-control" placeholder="<s:text name="guestName"></s:text>" id="username"
+							name="registerUser.guestNames" onblur="blurRegNoInput(this)" />
+						<label id="reg-username-tips" style="color:#FF2D2D; display:none"><s:text name="noinput"></s:text></label>
 					</div>
 					
 				</div>
 
 				<div class="form-group">
-					
-					<label class="col-md-3 control-label">年龄</label>
+				
+					<label class="col-md-3 control-label"><s:text name="age"></s:text></label>
 					<div class="col-md-3">
-						<input type="text" class="form-control" placeholder="year" id="year"
-							name="registerUser.ages" onblur="blurRegYear(this)"/>
+						<input type="text" class="form-control" placeholder="<s:text name="age"></s:text>" id="year"
+							name="registerUser.ages" onblur="blurRegYear(this)" />
 					</div>
 					
-					<label class="col-md-2 control-label">性别</label>
+					<label class="col-md-2 control-label"><s:text name="sex"></s:text></label>
 					<div class="col-md-4">
 						<select class="form-control col-md-1" name="registerUser.sexes">
-							<option value="male">男</option>
-							<option value="female">女</option>
+							<option value="male"><s:text name="male"></s:text></option>
+							<option value="female"><s:text name="female"></s:text></option>
 						</select>
 					</div>
-					
+
 					<!-- <input type="radio" name="registerUser.sexes" value="male"> 
 					<label class="control-label">男</label>
 					<input type="radio" name="registerUser.sexes" value="female">
         			<label class="control-label">女</label> -->
 				</div>
+				
 				<div class="form-group" id="reg-year-tips" style="display:none">
 					<label class="col-md-3 control-label"></label>
 					<div class="col-md-9">
-						<label  style="color:#FF2D2D;">年龄应输入正整数！</label>
+						<label  style="color:#FF2D2D;"><s:text name="noyear"></s:text></label>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="col-md-3 control-label">居住地</label>
+					<label class="col-md-3 control-label"><s:text name="livingPlace"></s:text></label>
 					<div class="col-md-9">
-						<input type="text" class="form-control" placeholder="Residence" id="residence"
-							name="registerUser.livingPlaces" onblur="blurRegNoInput(this)"/>
-						<label id="reg-residence-tips" style="color:#FF2D2D; display:none">未填写！</label>
+						<input type="text" class="form-control" placeholder="<s:text name="livingPlace"></s:text>" id="residence"
+							name="registerUser.livingPlaces" onblur="blurRegNoInput(this)" />
+						<label id="reg-residence-tips" style="color:#FF2D2D; display:none"><s:text name="noinput"></s:text></label>
 					</div>
 				</div>
 				
@@ -380,8 +396,7 @@
 			if(state == 0){
 				return false;
 			}
-			alert("true");
-			return false;
+			return true;
 		}
 		
 		function blurRegEmail(){
@@ -534,8 +549,7 @@
 			if(state == 0){
 				return false;
 			}
-			alert("true");
-			return false;
+			return true;
 		}
 	</script>
 
