@@ -7,7 +7,7 @@
 		<span class="glyphicon glyphicon-hand-right"></span>
 
 		<s:if test="closed">
-			<span class="label label-default">已完结</span>
+			<span class="label label-default"><s:text name="closed" /></span>
 		</s:if>
 
 		<a class="title" data-toggle="modal"
@@ -30,22 +30,22 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="eventModalLabel">活动详情</h4>
+					<h4 class="modal-title" id="eventModalLabel"><s:text name="eventDetail" /></h4>
 				</div>
 
 				<div class="modal-body">
 					<p>
-						主题：
+						<s:text name="title" />：
 						<s:property value="title" />
 					</p>
 
 					<table class="table">
 						<thead>
 							<tr>
-								<th>场次</th>
-								<th>时间</th>
-								<th>教练</th>
-								<th>地点</th>
+								<th><s:text name="round" /></th>
+								<th><s:text name="time" /></th>
+								<th><s:text name="coach" /></th>
+								<th><s:text name="place" /></th>
 							</tr>
 						</thead>
 
@@ -71,7 +71,7 @@
 					<form action="user/reserve-event" method="post">
 						<input type="hidden" name="eventId" value='<s:property value="id"/>'>
 						
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal"><s:text name="close" /></button>
 					</form>
 
 				</div>

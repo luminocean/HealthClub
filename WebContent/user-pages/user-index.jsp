@@ -49,7 +49,9 @@
 				<!-- 广告 -->
 				<div class="row">
 					<div class="banner">
-						<p class="banner-word">自分の限界をしりたいのか？</p>
+						<p class="banner-word">
+							<s:text name="bannerMsg"></s:text>
+						</p>
 					</div>
 				</div>
 
@@ -58,7 +60,7 @@
 					<div class="col-md-5">
 						<div class="page-header">
 							<p class="page-title">
-								<span class="glyphicon glyphicon-list" /> 活动热荐
+								<span class="glyphicon glyphicon-list" /> <s:text name="eventRecommend"></s:text>
 							</p>
 						</div>
 
@@ -91,22 +93,27 @@
 									<img alt="Second slide" src="pic/banner/words.jpg"></img>
 									<div class="carousel-caption"
 										style="color: black; text-shadow: 0px 0px 10px #fff;">
-										<h3>你有太多的事情要考虑</h3>
-										<p>不如我们来帮你解决吧</p>
+										<!-- <h3>你有太多的事情要考虑</h3>
+										<p>不如我们来帮你解决吧</p> -->
+										<h3><s:text name="slideMsg1"></s:text></h3>
+										<p><s:text name="slideMsg2"></s:text></p>
 									</div>
 								</div>
 								<div class="item">
 									<img alt="Second slide" src="pic/banner/apple.jpg"></img>
 									<div class="carousel-caption" style="color: white">
-										<h3>健康，往往很简单</h3>
+										<!--<h3>健康，往往很简单</h3>-->
+										<h3><s:text name="slideMsg3"></s:text></h3>
 									</div>
 								</div>
 								<div class="item">
 									<img alt="Third slide" src="pic/banner/running.jpg"></img>
 									<div class="carousel-caption"
 										style="margin-bottom: 50px; color: white;">
-										<h3>跑步，跑步，再跑步</h3>
-										<p>追逐脉搏的速度</p>
+										<!--<h3>跑步，跑步，再跑步</h3>
+										<p>追逐脉搏的速度</p> -->
+										<h3><s:text name="slideMsg4"></s:text></h3>
+										<p><s:text name="slideMsg5"></s:text></p>
 									</div>
 								</div>
 							</div>

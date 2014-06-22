@@ -22,10 +22,21 @@
 			<!--搜索表单（测试）-->
 			<form class="navbar-form navbar-left" action="">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
+					<input type="text" class="form-control" placeholder="<s:text name="keyword"></s:text>">
 				</div>
-				<button type="submit" class="btn btn-default">搜索</button>
+				<button type="submit" class="btn btn-default">
+					<s:text name="search"></s:text>
+				</button>
 			</form>
+			
+			<ul class="nav navbar-nav">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><s:text name="languageSwitch" /> <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="user-home?request_locale=zh_CN">中文</a></li>
+							<li><a href="user-home?request_locale=en_US">English</a></li>
+						</ul></li>
+				</ul>
 
 			<!-- $导航栏的组件如果要垂直对齐往往需要navbar的特殊版本！-->
 
@@ -33,7 +44,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="login.jsp"><s:property value="#session['user'].name" default="UserX"></s:property></a></li>
 				<li><form method="post" action="logout.action">
-						<input type="submit" class="btn btn-default navbar-btn" value="登出" />
+						<input type="submit" class="btn btn-default navbar-btn" value="<s:text name="logout"></s:text>" />
 					</form></li>
 			</ul>
 		</nav>

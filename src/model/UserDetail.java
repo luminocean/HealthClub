@@ -37,9 +37,9 @@ public class UserDetail {
 	public String getStringSex(){
 		switch(this.sex){
 		case MALE:
-			return "男";
+			return "male";
 		case FEMALE:
-			return "女";
+			return "female";
 		}
 		
 		return "未知性别";

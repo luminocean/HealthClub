@@ -7,6 +7,7 @@
 
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="dictionary" />
 
 	<!-- 继承的基础package -->
 	<package name="base" extends="struts-default" abstract="true">
@@ -257,7 +258,7 @@
 		<!-- 默认经理主页 -->
 		<action name="manager-home" class="indexAction" method="getServantIndex">
 			<result>
-				/manager-pages/business-statistic.jsp
+				/manager-pages/business-analysis.jsp
 			</result>
 		</action>
 
