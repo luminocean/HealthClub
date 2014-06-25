@@ -2,3 +2,8 @@
 	-	本系统是一个Web项目，因此需要Tomcat的支持
 	-	本项目的数据库文件为 WebContent/resource/healthDump1.0.sql
 	-	数据库的配置内容在 META-INF/context.xml内，使用时务必修改里面的数据库用户名密码配置（目前默认为空）
+
+测试用户：
+	- 顾客 kang@kang.com  密码 k
+	- 服务员 servant@servant.com s
+	- 经理 manager@manager.com m
