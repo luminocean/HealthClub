@@ -1,0 +1,4 @@
+运行前的注意事项：
+	-	本系统是一个Web项目，因此需要Tomcat的支持
+	-	本项目的数据库文件为 WebContent/resource/healthDump1.0.sql
+	-	数据库的配置内容在 META-INF/context.xml内，使用时务必修改里面的数据库用户名密码配置（目前默认为空）
