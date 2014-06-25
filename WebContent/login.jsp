@@ -39,7 +39,7 @@
 
 			<!-- 导航栏正体 -->
 			<nav class="collapse navbar-collapse" id="nav-body">
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown"><s:text name="languageSwitch" /> <b class="caret"></b></a>
 						<ul class="dropdown-menu">

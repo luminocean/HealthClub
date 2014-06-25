@@ -105,7 +105,7 @@
 								<div class="tab-pane fade in active" id="normal-card-info">
 
 									<s:push value="#session.user">
-										<s:if test="stringState=='未激活'">
+										<s:if test="stringState=='unactivated'">
 											<s:include value="activate-membership.jsp">
 												<s:param name="type">
 													<s:property value="stringType" />
@@ -147,7 +147,7 @@
 
 
 											<!-- 如果状态是未激活那么就不应该有续费按钮 -->
-											<s:if test="stringState=='已欠费'">
+											<s:if test="stringState=='unpaid'">
 												<a id="recover-btn" class="btn btn-default"
 													data-toggle="modal" data-target="#recoverModal"><s:text
 														name="repay" /></a>
@@ -187,7 +187,7 @@
 											</table>
 										</div>
 
-										<s:if test="stringState=='正常'">
+										<s:if test="stringState=='normal'">
 											<form action="user/cancel-membership" method="post">
 												<input type="hidden" value='<s:property value="id"/>' />
 												<button class="btn btn-default" type="submit">
